@@ -1,0 +1,8 @@
+{
+  "name": "JDS",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "4a676cca"
+}

@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "JDS",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
