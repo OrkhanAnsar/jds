@@ -1,3 +1,21 @@
-<p>
-  register works!
-</p>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <ion-input formControlName="firstName" placeholder="First Name" ngDefaultControl></ion-input>
+          <ion-input formControlName="lastName" placeholder="Last Name" ngDefaultControl></ion-input>
+          <ion-input formControlName="email" placeholder="Email" ngDefaultControl></ion-input>
+          <ion-input formControlName="username" placeholder="Username" ngDefaultControl></ion-input>
+          <ion-input formControlName="password" placeholder="Password" ngDefaultControl type="password"></ion-input>
+          <ion-input formControlName="birthDate" placeholder="Birth Date" ngDefaultControl></ion-input>
+          <ion-input formControlName="gender" placeholder="Gender" ngDefaultControl type="number"></ion-input>
+          <ion-input formControlName="state" placeholder="State" ngDefaultControl></ion-input>
+          <ion-input formControlName="city" placeholder="City" ngDefaultControl></ion-input>
+          <ion-button type="submit" [disabled]="!registerForm.valid">Register</ion-button>
+        </form>
+        <!-- <a routerLink="../">Sign In</a> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
