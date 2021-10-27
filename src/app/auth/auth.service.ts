@@ -12,6 +12,6 @@ export class AuthService {
   constructor(private client: HttpClient) { }
 
   loginUser(loginInfo: LoginInfo): Observable<LoginResponse> {
-    return this.client.post<LoginResponse>(`${environment.apiBaseUrl}/auth-user`, loginInfo)
+    return this.client.post<LoginResponse>(`${environment.apiBaseUrl}/auth-user/`, loginInfo)
   }
 }
