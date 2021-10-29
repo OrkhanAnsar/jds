@@ -15,6 +15,17 @@ export interface RegisterInfo {
     city: string;
 }
 
+export interface RegisterVendorInfo {
+    name: string;
+    state: string;
+    email: string;
+    username: string;
+    password: string;
+    address: string;
+    postalCode: string;
+    city: string;
+}
+
 export interface AuthResponse {
     id: number;
     token: string;
