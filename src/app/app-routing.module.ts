@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { UserGuard } from './user/user.guard';
 import { VendorGuard } from './vendor/vendor.guard';
 
@@ -18,7 +19,7 @@ const routes: Routes = [
     loadChildren: () => import('./vendor/vendor.module').then(m => m.VendorModule),
     canActivate: [VendorGuard]
   },
-  { path: '**', redirectTo: ''}
+  { path: '**', component: ErrorPageComponent}
 ];
 @NgModule({
   imports: [

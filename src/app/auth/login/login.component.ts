@@ -21,8 +21,4 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.authService.loginUser(this.loginForm.value);
   }
-
-  async someMethod() {
-    console.log(await this.authService.getToken());
-  }
 }

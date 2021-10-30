@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StorageService } from './storage.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ErrorPageComponent
+  ],
   imports: [
     CommonModule
   ],
   exports: [
-    StorageService
+    ErrorPageComponent
   ]
 })
 export class SharedModule { }
