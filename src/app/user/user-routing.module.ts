@@ -1,20 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CouponsPageComponent } from './coupons-page/coupons-page.component';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { UserComponent } from './user.component';
 
 const routes: Routes = [
   {
-    path: 'coupons',
-    component: CouponsPageComponent
-  },
-  {
-    path: 'profile',
-    component: ProfilePageComponent
+    path: '',
+    component: UserComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'coupons',
+        pathMatch: 'full'
+      },
+      {
+        path: 'coupons',
+        loadChildren: () => import('./coupons/coupons.module').then(m => m.CouponsModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+      }
+    ]
   },
   {
     path: '**',
-    redirectTo: 'coupons'
+    redirectTo: ''
   }
 ];
 

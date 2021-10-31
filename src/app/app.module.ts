@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -15,8 +14,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, 
-    ReactiveFormsModule,
+    BrowserModule,
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpClientModule,

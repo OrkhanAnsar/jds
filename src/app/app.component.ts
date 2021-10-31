@@ -16,12 +16,15 @@ export class AppComponent implements OnInit {
 
     switch (userType) {
       case 'user':
+        console.log('user');
         this.router.navigate(['user']);
         break;
       case 'vendor':
+        console.log('vendor');
         this.router.navigate(['vendor']);
         break;
       default:
+        console.log('auth');
         this.router.navigate(['auth']);
         break;
     }

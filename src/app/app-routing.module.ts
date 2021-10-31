@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { UserGuard } from './user/user.guard';
 import { VendorGuard } from './vendor/vendor.guard';
@@ -7,7 +8,8 @@ import { VendorGuard } from './vendor/vendor.guard';
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'user',
