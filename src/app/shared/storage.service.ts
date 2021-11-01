@@ -9,18 +9,19 @@ export class StorageService {
     this.init();
   }
 
-  async init() {
-    await this.storage.create();
+  init() {
+    this.storage.create();
   }
 
-  async set(value: any) {
-    Object.keys(value)
-      .forEach(k => {
-        this.storage.set(k, value[k]);
-      });
+  set(key: string, value: any) {
+    this.storage.set(key, value);
   };
 
   async get(key: string) {
     return await this.storage.get(key);
+  }
+
+  async clear() {
+    await this.storage.clear();
   }
 }

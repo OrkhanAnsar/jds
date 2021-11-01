@@ -12,9 +12,9 @@ export class AppComponent implements OnInit {
   constructor(private storageService: StorageService, private router: Router) { }
 
   async ngOnInit() {
-    const userType = await this.storageService.get('userType');
+    const auth = await this.storageService.get('auth');
 
-    switch (userType) {
+    switch (auth?.userType) {
       case 'user':
         console.log('user');
         this.router.navigate(['user']);

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,8 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userService.getUser()
+      .then(user => console.log(user))
+      .catch(err => console.log(err));
+  }
 
+  signOut() {
+    this.userService.signOut();
+    this.router.navigate(['auth']);
+  }
+
+  async getInfo() {
+    console.log(await this.userService.getInfo());
+  }
 }

@@ -16,7 +16,7 @@ export class AuthService {
     this.client.post<AuthResponse>(`${environment.apiBaseUrl}/auth-user/`, loginInfo)
       .subscribe(
         data => {
-          this.storageService.set({...data, userType: 'user'})
+          this.storageService.set('auth', {...data, userType: 'user'})
           this.router.navigate(['user']);
         },
         err => console.log(err)
@@ -41,7 +41,7 @@ export class AuthService {
     this.client.post<AuthResponse>(`${environment.apiBaseUrl}/register-user/`, registerModel)
       .subscribe(
         data => {
-          this.storageService.set({...data, userType: 'user'})
+          this.storageService.set('auth', {...data, userType: 'user'})
           this.router.navigate(['user/profile'])
         },
         err => console.log(err)
@@ -52,7 +52,7 @@ export class AuthService {
     this.client.post<AuthResponse>(`${environment.apiBaseUrl}/auth-vendor/`, loginInfo)
       .subscribe(
         data => {
-          this.storageService.set({...data, userType: 'vendor'})
+          this.storageService.set('auth', {...data, userType: 'vendor'})
           this.router.navigate(['vendor']);
         },
         err => console.log(err)
@@ -71,19 +71,13 @@ export class AuthService {
       city: registerInfo.city
     };
 
-    console.log(registerModel);
-
     this.client.post<AuthResponse>(`${environment.apiBaseUrl}/register-vendor/`, registerModel)
       .subscribe(
         data => {
-          this.storageService.set({...data, userType: 'vendor'})
+          this.storageService.set('auth', {...data, userType: 'vendor'})
           this.router.navigate(['vendor'])
         },
         err => console.log(err)
       );
-  }
-
-  async getToken() {
-    return await this.storageService.get('token');
   }
 }
