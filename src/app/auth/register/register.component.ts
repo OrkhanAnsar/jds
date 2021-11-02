@@ -21,9 +21,26 @@ export class RegisterComponent implements OnInit {
     city: ['', [Validators.required]]
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthService) { }
+  customYearValues = [2020, 2016, 2008, 2004, 2000, 1996];
+  customDayShortNames = ['s\u00f8n', 'man', 'tir', 'ons', 'tor', 'fre', 'l\u00f8r'];
+  customPickerOptions: any;
 
-  ngOnInit() {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {
+    this.customPickerOptions = {
+      buttons: [{
+        text: 'Save',
+        handler: () => console.log('Clicked Save!')
+      }, {
+        text: 'Log',
+        handler: () => {
+          console.log('Clicked Log. Do not Dismiss.');
+          return false;
+        }
+      }]
+    }
+  }
+
+  ngOnInit() { }
 
   async onSubmit() {
     this.authService.registerUser(this.registerForm.value);
