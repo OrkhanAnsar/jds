@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'coupons',
+        redirectTo: 'profile',
         pathMatch: 'full'
       },
       {
