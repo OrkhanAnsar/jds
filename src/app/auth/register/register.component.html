@@ -39,34 +39,41 @@
 
           <ion-item lines="none">
             <ion-label>Start Date</ion-label>
-            <ion-datetime class="input" value="1990-02-19" formControlName="birthDate" ngDefaultControl
-              placeholder="Birth Date"></ion-datetime>
+            <ion-datetime class="input" formControlName="birthDate" ngDefaultControl placeholder="Birth Date"
+              displayFormat="YYYY-MM-DD" max="2003-11-02">
+            </ion-datetime>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label>State</ion-label>
+            <ion-input class="input" formControlName="state" placeholder="State" ngDefaultControl></ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label>City</ion-label>
+            <ion-input class="input" formControlName="city" placeholder="City" ngDefaultControl></ion-input>
           </ion-item>
 
           <!-- gender -->
           <ion-list lines="none">
-            <ion-radio-group value="biff">
+            <ion-radio-group formControlName="gender" ngDefaultControl>
               <ion-list-header>
                 <ion-label>I am</ion-label>
               </ion-list-header>
 
               <ion-item>
                 <ion-label>Male</ion-label>
-                <ion-radio slot="start" value="0"></ion-radio>
+                <ion-radio slot="start" value="1"></ion-radio>
               </ion-item>
 
               <ion-item>
                 <ion-label>Female</ion-label>
-                <ion-radio slot="start" value="1"></ion-radio>
+                <ion-radio slot="start" value="0"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
 
-
-          <!-- <ion-input formControlName="gender" placeholder="Gender" ngDefaultControl type="number"></ion-input>
-          <ion-input formControlName="state" placeholder="State" ngDefaultControl></ion-input>
-          <ion-input formControlName="city" placeholder="City" ngDefaultControl></ion-input> --> -->
-          <ion-button type="submit" [disabled]="!registerForm.valid">Register</ion-button>
+          <ion-button type="submit" expand="block" [disabled]="!registerForm.valid">Register</ion-button>
         </form>
         <!-- <a routerLink="../">Sign In</a> -->
       </ion-col>
