@@ -15,7 +15,7 @@ export class TokenInterceptor implements HttpInterceptor {
         const auth = await this.storageService.get('auth');
 
         if (auth?.token) {
-            return next.handle(req.clone({ setHeaders: { 'Token': auth.token }})).toPromise();
+            return next.handle(req.clone({ setHeaders: { 'Authorization': 'Token ' + auth.token } })).toPromise();
         }
 
         return next.handle(req).toPromise();
