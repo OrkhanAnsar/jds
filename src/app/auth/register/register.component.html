@@ -38,16 +38,28 @@
           </ion-item>
 
           <ion-item lines="none">
-            <ion-label>Start Date</ion-label>
+            <ion-label>Birth date</ion-label>
             <ion-datetime class="input" formControlName="birthDate" ngDefaultControl placeholder="Birth Date"
               displayFormat="YYYY-MM-DD" max="2003-11-02">
             </ion-datetime>
           </ion-item>
 
-          <ion-item lines="none">
+          <!-- <ion-item lines="none">
             <ion-label>State</ion-label>
             <ion-input class="input" formControlName="state" placeholder="State" ngDefaultControl></ion-input>
-          </ion-item>
+          </ion-item> -->
+
+          <ion-list>
+            <ion-item lines="none">
+              <ion-label>State</ion-label>
+              <ion-select class="input select" formControlName="state">
+                <ion-select-option
+                  *ngFor="let state of states"
+                  [value]="state.value"
+                >{{state.text}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
 
           <ion-item lines="none">
             <ion-label>City</ion-label>

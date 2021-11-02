@@ -15,20 +15,29 @@ ion-content {
     text-indent: 15px;
     --padding-start: 0;
 }
-ion-input{
+
+.select {
+    min-width: 70%;
+    position: absolute;
+    right: 10px;
+    // color: red;
+    // text-indent: 50px;
+}
+
+ion-input {
     max-width: 70%;
     position: absolute;
     right: 10px;
 }
-ion-datetime{
+ion-datetime {
     width: 70%;
     position: absolute;
     right: 10px;
     // color: red;
     // text-indent: 50px;
 }
-ion-radio{
-    --color: red,
+ion-radio {
+    --color: red;
 }
 
 ion-button {
@@ -39,7 +48,7 @@ ion-button {
     margin-top: 20px;
 }
 
-.input-wrapper{
+.input-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;

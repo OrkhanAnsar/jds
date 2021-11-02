@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import States from './states'
 
 @Component({
   selector: 'app-register',
@@ -8,6 +9,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  states: { text: string, value: string }[] = States;
 
   registerForm: FormGroup = this.fb.group({
     firstName: ['', [Validators.required]],
@@ -15,7 +17,7 @@ export class RegisterComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
-    birthDate: ['', [Validators.required]],
+    birthDate: ['', []],
     gender: ['1', [Validators.required]],
     state: ['', [Validators.required]],
     city: ['', [Validators.required]]
@@ -23,10 +25,17 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
 
   async onSubmit() {
     // this.authService.registerUser(this.registerForm.value);
     console.log(this.registerForm.value);
+  }
+
+  change(e) {
+    console.log(e);
+    console.log('scdcd')
   }
 }
