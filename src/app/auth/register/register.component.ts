@@ -30,8 +30,8 @@ export class RegisterComponent implements OnInit {
   }
 
   async onSubmit() {
-    // this.authService.registerUser(this.registerForm.value);
-    console.log(this.registerForm.value);
+    // console.log(this.registerForm.value);
+    this.authService.registerUser(this.registerForm.value);
   }
 
   change(e) {

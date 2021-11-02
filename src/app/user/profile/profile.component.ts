@@ -16,13 +16,4 @@ export class ProfileComponent implements OnInit {
       .then(user => console.log(user))
       .catch(err => console.log(err));
   }
-
-  signOut() {
-    this.userService.signOut();
-    this.router.navigate(['auth']);
-  }
-
-  async getInfo() {
-    console.log(await this.userService.getInfo());
-  }
 }
