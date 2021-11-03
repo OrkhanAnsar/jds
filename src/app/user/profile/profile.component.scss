@@ -1,7 +1,3 @@
-*{
-    margin: 0px;
-    padding: 0px;
-}
 
 .profile-content {
     --background: none;
@@ -33,6 +29,7 @@
     justify-content: space-around;
     border-radius: 30px;
     padding: 10px;
+    margin: 0;
 }
 
 .navigation-card div {

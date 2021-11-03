@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class YearsCountPipe implements PipeTransform {
 
   transform(value: string): number {
-    console.log('pipe');
     if (value) {
       let curr = Date.now();
       let given = new Date(value).getTime();
