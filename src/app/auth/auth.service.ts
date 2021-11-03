@@ -30,7 +30,7 @@ export class AuthService {
       email: registerInfo.email,
       username: registerInfo.username,
       password: registerInfo.password,
-      birth_date: registerInfo.birthDate,
+      birth_date: new Date(registerInfo.birthDate).toISOString().slice(0, 10),
       gender: registerInfo.gender,
       state: registerInfo.state,
       city: registerInfo.city

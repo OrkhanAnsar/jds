@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { IonicModule } from '@ionic/angular';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { IonicModule } from '@ionic/angular';
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    IonicModule
+    IonicModule,
+    SharedModule
   ]
 })
 export class ProfileModule { }

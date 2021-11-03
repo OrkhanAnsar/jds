@@ -2,18 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StorageService } from './storage.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { YearsCountPipe } from './years-count.pipe';
 
 
 
 @NgModule({
   declarations: [
-    ErrorPageComponent
+    ErrorPageComponent,
+    YearsCountPipe
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    ErrorPageComponent
+    ErrorPageComponent,
+    YearsCountPipe
   ]
 })
 export class SharedModule { }
