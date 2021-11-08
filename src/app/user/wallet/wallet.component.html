@@ -12,7 +12,7 @@
 
 
 
-  <ion-row class=" ion-padding-horizontal">
+  <ion-row class=" ion-padding-end">
     <ion-col>
       <ion-list>
         <ion-list-header *ngIf="infos?.length == 1"> Your card</ion-list-header>
@@ -60,23 +60,14 @@
 
   <ion-row>
     <ion-col>
-      <ion-item>
+      <ion-item *ngFor="let transaction of transactions">
         <ion-avatar class="ion-margin-end">
           <ion-icon color="secondary" name="basket"></ion-icon>
         </ion-avatar>
         <ion-label>
-          <h2>C&C Bellisimo</h2>
-          <h3>Coupon with 20% discount - dinner for two</h3>
-        </ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-avatar class="ion-margin-end">
-          <ion-icon color="secondary" name="logo-usd"></ion-icon>
-        </ion-avatar>
-        <ion-label>
-          <h2>C&C Bellisimo</h2>
-          <h3>Coupon with 20% discount - dinner for two</h3>
+          <h2>{{transaction.reason}}</h2>
+          <h3>{{transaction.details}}</h3>
+          <h2 [ngClass]="transaction.price > 0 ? 'green': 'red'" class="price" >{{transaction.price}}$</h2>
         </ion-label>
       </ion-item>
     </ion-col>
