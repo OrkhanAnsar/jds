@@ -21,6 +21,30 @@ export class WalletComponent implements OnInit {
       digits: 2834,
       cardType: 'Visa'
     },
+    {
+      name: "John",
+      surname: "Smith",
+      digits: 9356, 
+      cardType: "Master Card"
+    },
+    {
+      name: "Adam",
+      surname: "Brown",
+      digits: 2834,
+      cardType: 'Visa'
+    },
+    {
+      name: "John",
+      surname: "Smith",
+      digits: 9356, 
+      cardType: "Master Card"
+    },
+    {
+      name: "Adam",
+      surname: "Brown",
+      digits: 2834,
+      cardType: 'Visa'
+    },
   ];
 
 
@@ -34,6 +58,11 @@ export class WalletComponent implements OnInit {
       reason: 'Balance Top Up',
       details: 'Transaction from VISA card **** **** **** 0000',
       price: +300
+    },
+    {
+      reason: 'C&C Bellisimo',
+      details: 'Coupon with 20% discount - dinner for two',
+      price: -56
     },
     
   ];
