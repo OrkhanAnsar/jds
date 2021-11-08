@@ -7,8 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WalletComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {}
+  public infos: { name: string, surname: string, digits: number, cardType: string } [] = [
+    {
+      name: "John",
+      surname: "Smith",
+      digits: 9356, 
+      cardType: "Master Card"
+    },
+    {
+      name: "Adam",
+      surname: "Brown",
+      digits: 2834,
+      cardType: 'Visa'
+    },
+  ];
+
+  
+
+constructor() { }
+
+ngOnInit() { }
 
 }

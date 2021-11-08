@@ -8,6 +8,33 @@
 
 
 <ion-content>
+
+
+
+
+  <ion-row class=" ion-padding-horizontal">
+    <ion-col>
+      <ion-list>
+        <ion-list-header *ngIf="infos?.length == 1"> Your card</ion-list-header>
+        <ion-list-header *ngIf="infos?.length > 1">Your cards</ion-list-header>
+
+        <ion-item *ngFor="let info of infos">
+          <ion-avatar slot="start">
+            <ion-icon color="dark" name="card"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{info.name}} {{info.surname}}</h2>
+            <p>xxxx xxxx xxxx {{info.digits}}</p>
+            <h4 class="card-type">{{info.cardType}}</h4>
+          </ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+
+
   <ion-row>
     <ion-col>
       <h2>Available</h2>
