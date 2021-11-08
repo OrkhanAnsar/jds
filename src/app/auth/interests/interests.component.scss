@@ -1,0 +1,39 @@
+.input {
+    background-color: #ffffff;
+    // width: 70%;
+    border-radius: 10px;
+
+    color: black;
+    font-size: 14px;
+    border: none;
+    box-shadow: 0px 0px 10px -10px #030303;
+    text-indent: 15px;
+    margin: 20px 0;
+    text-align: start;
+}
+
+ion-button {
+    --background: #000;
+    --border-radius: 10px;
+    --color: white;
+    --font-size: 70px;
+    margin-top: 20px;
+}
+
+.button {
+    font-size: 15px;
+}
+
+ion-col {
+    text-align: center;
+}
+
+ion-text h2, h5 {
+    margin-top: 0;
+}
+
+.link {
+    color: #77bcdf;
+    font-style: none;
+    margin-top: 15px;
+}

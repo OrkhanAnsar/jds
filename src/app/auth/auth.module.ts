@@ -6,12 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { InterestsComponent } from './interests/interests.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    InterestsComponent
   ],
   imports: [
     CommonModule,
