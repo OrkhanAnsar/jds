@@ -14,7 +14,7 @@ export class LoadingService {
       message: 'Please wait...'
     });
 
-    await this.loading.present();
+    this.loading.present();
   }
 
   stop() {

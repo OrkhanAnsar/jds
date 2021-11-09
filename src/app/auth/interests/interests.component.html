@@ -17,10 +17,32 @@
             <h5>What you do?</h5>
           </ion-text>
 
-          <ion-input class="input" formControlName="interest1" placeholder="Interest/Hobbie 1">
-          </ion-input>
-          <ion-input class="input" formControlName="interest2" placeholder="Interest 2"></ion-input>
-          <ion-input class="input" formControlName="interest3" placeholder="Interest 3"></ion-input>
+          <ion-item lines="none">
+            <ion-select class="input select" formControlName="interest1" placeholder="Interest/Hobbie 1">
+              <ion-select-option
+                *ngFor="let interest of interests"
+                [value]="interest.value"
+              >{{interest.text}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-select class="input select" formControlName="interest2" placeholder="Interest 2">
+              <ion-select-option
+                *ngFor="let interest of interests"
+                [value]="interest.value"
+              >{{interest.text}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-select class="input select" formControlName="interest3" placeholder="Interest 3">
+              <ion-select-option
+                *ngFor="let interest of interests"
+                [value]="interest.value"
+              >{{interest.text}}</ion-select-option>
+            </ion-select>
+          </ion-item>
 
           <ion-text>
             Tell us more about you to we can find you a perfect match!

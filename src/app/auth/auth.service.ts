@@ -6,6 +6,9 @@ import { StorageService } from '../shared/storage.service';
 import { Router } from '@angular/router';
 import { LoadingService } from '../shared/loading.service';
 
+import { iif, Observable, pipe } from 'rxjs';
+import { delay, switchMap, tap } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,21 +17,16 @@ export class AuthService {
   private _interestsInfo: InterestsInfo;
 
   constructor(
-    private client: HttpClient, 
-    private storageService: StorageService, 
-    private router: Router,
-    private loadingService: LoadingService) {
+    private client: HttpClient,
+    private storageService: StorageService,
+    private router: Router) {
   }
 
   loginUser(loginInfo: LoginInfo) {
-    this.client.post<AuthResponse>(`${environment.apiBaseUrl}/auth-user/`, loginInfo)
-      .subscribe(
-        data => {
-          this.storageService.set('auth', { ...data, userType: 'user' })
-          this.router.navigate(['user']);
-        },
-        err => console.log(err)
-      )
+    return this.client.post<AuthResponse>(`${environment.apiBaseUrl}/auth-user/`, loginInfo)
+      .pipe(
+        tap(value => this.storageService.set('auth', { ...value, userType: 'user' }))
+      );
   }
 
   set userInfo(registerInfo: RegisterInfo) {
@@ -40,55 +38,27 @@ export class AuthService {
     this._interestsInfo = interestsInfo;
   }
 
-  async registerUser() {
-    try {
-      this.loadingService.present();
-      // const registerData = await this.client.post<AuthResponse>(`${environment.apiBaseUrl}/register-user/`, this._userInfo).toPromise();
-      // this.storageService.set('auth', { ...registerData, userType: 'user' })
-
-      // this.router.navigate(['auth/dwolla']);
-      
-      setTimeout(() => {
-        console.log(this._userInfo);
-        console.log(this._interestsInfo);
-        this.loadingService.stop();
-      }, 5000);
-      // this.loadingService.stop();
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  loginVendor(loginInfo: LoginInfo) {
-    this.client.post<AuthResponse>(`${environment.apiBaseUrl}/auth-vendor/`, loginInfo)
-      .subscribe(
-        data => {
-          this.storageService.set('auth', { ...data, userType: 'vendor' })
-          this.router.navigate(['vendor']);
-        },
-        err => console.log(err)
+  registerUser() {
+    return this.client.post<AuthResponse>(`${environment.apiBaseUrl}/register-user/`, this._userInfo)
+      .pipe(
+        tap(value => this.storageService.set('auth', { ...value, userType: 'user' })),
+        delay(1000),
+        switchMap(value => {
+          const id = value.id;
+          const interests = [];
+          Object.keys(this._interestsInfo).forEach(key => {
+            if ((key as string).startsWith('interest') && this._interestsInfo[key]) {
+              interests.push(this._interestsInfo[key]);
+            }
+          })
+          console.log(interests);
+          return this.client.post(`${environment.apiBaseUrl}/users/${id}/`, { interests: interests, bio: this._interestsInfo.about });
+        }),
+        delay(1000)
       )
   }
 
-  registerVendor(registerInfo: RegisterVendorInfo) {
-    const registerModel = {
-      name: registerInfo.name,
-      state: registerInfo.state,
-      email: registerInfo.email,
-      username: registerInfo.username,
-      password: registerInfo.password,
-      address: registerInfo.address,
-      postal_code: registerInfo.postalCode,
-      city: registerInfo.city
-    };
-
-    this.client.post<AuthResponse>(`${environment.apiBaseUrl}/register-vendor/`, registerModel)
-      .subscribe(
-        data => {
-          this.storageService.set('auth', { ...data, userType: 'vendor' })
-          this.router.navigate(['vendor'])
-        },
-        err => console.log(err)
-      );
+  getInterests() {
+    return this.client.get(`${environment.apiBaseUrl}/interests/`);
   }
 }
