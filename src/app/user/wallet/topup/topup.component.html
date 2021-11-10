@@ -1,0 +1,43 @@
+<ion-content class="ion-justify-content-center">
+    <ion-row class="ion-margin-horizontal ion-align-items-center">
+        <form [formGroup]="processForm" (ngSubmit)="onSubmit()"></form>
+        <ion-col size="12">
+
+            <!-- card picker -->
+            <ion-list>
+                <ion-item class="firstt" lines="none">
+                    <ion-select class="input select" formControlName="card" placeholder="Pick your card">
+                        <ion-select-option *ngFor="let card of cards" [value]="card.number">**** **** ****
+                            {{card.digits}}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+
+            <!-- amount input -->
+            <ion-item lines="none" class="">
+                <ion-input class="input" formControlName="amount" placeholder="Enter the amount of money"
+                    ngDefaultControl>
+                </ion-input>
+            </ion-item>
+
+            <!-- radio process -->
+            <ion-list lines="none">
+                <ion-radio-group formControlName="process">
+                    <ion-item>
+                        <ion-label>deposit</ion-label>
+                        <ion-radio slot="start" value="0"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>withdraw</ion-label>
+                        <ion-radio slot="start" value="1"></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-list>
+
+            <!-- button -->
+            <ion-button type="submit" expand="block">Process</ion-button>
+
+        </ion-col>
+    </ion-row>
+</ion-content>
