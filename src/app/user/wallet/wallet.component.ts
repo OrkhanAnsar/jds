@@ -12,6 +12,25 @@ export class WalletComponent implements OnInit {
   wallets: WalletInfo[] = [];
   balance: string = '---';
 
+  transactions: { reason: string, details: string, price: number } [] = [
+    {
+      reason: 'C&C Bellisimo',
+      details: 'Coupon with 20% discount - dinner for two',
+      price: -56
+    },
+    {
+      reason: 'Balance Top Up',
+      details: 'Transaction from VISA card **** **** **** 0000',
+      price: +300
+    },
+    {
+      reason: 'C&C Bellisimo',
+      details: 'Coupon with 20% discount - dinner for two',
+      price: -56
+    },
+    
+  ];
+
   constructor(private walletService: WalletService) { }
 
   ngOnInit() {
