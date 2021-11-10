@@ -4,11 +4,14 @@ import { CommonModule } from '@angular/common';
 import { WalletRoutingModule } from './wallet-routing.module';
 import { WalletComponent } from './wallet.component';
 import { IonicModule } from '@ionic/angular';
+import { BrowserModule } from '@angular/platform-browser';
+import { TopupComponent } from './topup/topup.component';
 
 
 @NgModule({
   declarations: [
-    WalletComponent
+    WalletComponent,
+    TopupComponent
   ],
   imports: [
     CommonModule,
