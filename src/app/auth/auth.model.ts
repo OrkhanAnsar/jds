@@ -37,3 +37,9 @@ export interface AuthResponse {
     id: number;
     token: string;
 };
+
+export interface DwollaRegistrationInfo {
+    address: string;
+    postal_code: string;
+    ssn: string;
+}
