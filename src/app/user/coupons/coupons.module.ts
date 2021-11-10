@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CouponsRoutingModule } from './coupons-routing.module';
 import { CouponsComponent } from './coupons.component';
+import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { CouponsComponent } from './coupons.component';
   ],
   imports: [
     CommonModule,
-    CouponsRoutingModule
+    CouponsRoutingModule,
+    IonicModule
   ]
 })
 export class CouponsModule { }

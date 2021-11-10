@@ -8,64 +8,74 @@
 
 
 <ion-content>
-  <ion-row>
-    <ion-col>
-      <ion-list-header>Your {{wallets?.length > 1 ? 'cards' : 'card'}}</ion-list-header>
-      <div scrolly="true" style="max-height:300px">
-        <ion-list class="ion-padding-end">
-          <ion-item *ngFor="let wallet of wallets">
-            <ion-avatar slot="start">
-              <ion-icon color="dark" name="card"></ion-icon>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="12">
+      <ion-row>
+        <ion-col>
+          <h2>Your {{wallets?.length > 1 ? 'cards' : 'card'}}</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div scrolly="true" style="max-height:300px">
+            <ion-list class="ion-padding-end">
+              <ion-item *ngFor="let wallet of wallets">
+                <ion-avatar slot="start">
+                  <ion-icon color="dark" name="card"></ion-icon>
+                </ion-avatar>
+                <ion-label>
+                  <h2>{{wallet.name}}</h2>
+                  <p>{{wallet.bank_name}}</p>
+                  <p>{{wallet.status}}</p>
+                </ion-label>
+              </ion-item>
+
+            </ion-list>
+          </div>
+        </ion-col>
+      </ion-row>
+
+
+
+      <ion-row>
+        <ion-col>
+          <h2>Available</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-between ion-align-items-center ion-padding-horizontal item-content">
+        <ion-col size="5">
+          <h3>
+            <ion-icon class="ion-margin-end" color="warning" name="wallet"></ion-icon> {{balance}}$
+          </h3>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button class="button" expand="block" type="submit" routerLink="/user/wallet/topup">TOP UP</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h2>Transactions</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-text *ngIf="!transactions?.length">No transactions yet.</ion-text>
+          <ion-item *ngFor="let transaction of transactions">
+            <ion-avatar class="ion-margin-end">
+              <ion-icon color="secondary" name="basket"></ion-icon>
             </ion-avatar>
             <ion-label>
-              <h2>{{wallet.name}} {{wallet.bank_name}}</h2>
-              <p>{{wallet.status}}</p>
+              <h2>{{transaction.reason}}</h2>
+              <h3>{{transaction.details}}</h3>
+              <h2 [ngClass]="transaction.price > 0 ? 'green': 'red'" class="price">{{transaction.price}}$</h2>
             </ion-label>
           </ion-item>
-
-        </ion-list>
-      </div>
-    </ion-col>
-  </ion-row>
-
-
-
-  <ion-row>
-    <ion-col>
-      <h2>Available</h2>
-    </ion-col>
-  </ion-row>
-
-  <ion-row class="ion-justify-content-between ion-align-items-center ion-padding-horizontal item-content">
-    <ion-col size="5">
-      <h3>
-        <ion-icon class="ion-margin-end" color="warning" name="wallet"></ion-icon> {{balance}}$
-      </h3>
-    </ion-col>
-    <ion-col size="4">
-      <ion-button class="button" expand="block" type="submit" routerLink="/user/wallet/topup">TOP UP</ion-button>
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col>
-      <h2>Transactions</h2>
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col>
-      <ion-text *ngIf="!transactions?.length">No transactions yet.</ion-text>
-      <ion-item *ngFor="let transaction of transactions">
-        <ion-avatar class="ion-margin-end">
-          <ion-icon color="secondary" name="basket"></ion-icon>
-        </ion-avatar>
-        <ion-label>
-          <h2>{{transaction.reason}}</h2>
-          <h3>{{transaction.details}}</h3>
-          <h2 [ngClass]="transaction.price > 0 ? 'green': 'red'" class="price">{{transaction.price}}$</h2>
-        </ion-label>
-      </ion-item>
+        </ion-col>
+      </ion-row>
     </ion-col>
   </ion-row>
 </ion-content>

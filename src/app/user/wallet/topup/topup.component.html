@@ -1,20 +1,22 @@
-<ion-content class="ion-justify-content-center">
+<ion-content class="container">
     <ion-row class="ion-margin-horizontal ion-align-items-center">
-        <ion-col class="ion-justify-content-center">
+        <ion-col>
             <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
                 <!-- card picker -->
-                <ion-list>
-                    <ion-item class="firstt" lines="none">
-                        <ion-select class="input select" formControlName="from_wallet" placeholder="Pick your card">
-                            <ion-select-option *ngFor="let wallet of wallets" [value]="wallet.id">{{wallet.name}}
-                            </ion-select-option>
-                        </ion-select>
-                    </ion-item>
-                </ion-list>
+                <ion-item lines="none">
+                    <ion-label>Wallet</ion-label>
+
+                    <ion-select class="input select" formControlName="from_wallet" placeholder="Pick your card">
+                        <ion-select-option *ngFor="let wallet of wallets" [value]="wallet.id">{{wallet.name}}
+                        </ion-select-option>
+                    </ion-select>
+                </ion-item>
 
                 <!-- amount input -->
-                <ion-item lines="none" class="">
+                <ion-item lines="none">
+                    <ion-label>Amount</ion-label>
                     <ion-input class="input" formControlName="sum" placeholder="Enter the amount of money">
+                        <ion-icon name="logo-usd"></ion-icon>
                     </ion-input>
                 </ion-item>
 
@@ -34,7 +36,8 @@
                     </ion-list> -->
 
                 <!-- button -->
-                <ion-button type="submit" expand="block" [disabled]="!transactionForm.valid">Process</ion-button>
+                <ion-button class="button" type="submit" expand="block" [disabled]="!transactionForm.valid">Process
+                </ion-button>
             </form>
         </ion-col>
     </ion-row>
