@@ -47,7 +47,7 @@ export class InterestsComponent implements OnInit {
     this.authService.registerUser()
       .subscribe(data => {
         this.loadingService.stop();
-        this.router.navigate(['user/profile']);
+        this.router.navigate(['auth/dwolla-registration']);
       });
   }
 }

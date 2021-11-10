@@ -14,7 +14,7 @@ export class UserService {
 
   async getUser(): Promise<UserInfo> {
     const userId = (await this.storageService.get('auth')).id;
-    return this.client.get<UserInfo>(`${environment.apiBaseUrl}/users/${userId}`).toPromise();
+    return this.client.get<UserInfo>(`${environment.apiBaseUrl}/users/${userId}/`).toPromise();
   }
 
   async signOut(): Promise<void> {

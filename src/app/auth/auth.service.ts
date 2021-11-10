@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
-import { LoginInfo, RegisterInfo, AuthResponse, RegisterVendorInfo, InterestsInfo } from './auth.model';
+import { LoginInfo, RegisterInfo, AuthResponse, RegisterVendorInfo, InterestsInfo, DwollaRegistrationInfo } from './auth.model';
 import { StorageService } from '../shared/storage.service';
 import { Router } from '@angular/router';
 import { LoadingService } from '../shared/loading.service';
@@ -60,5 +60,13 @@ export class AuthService {
 
   getInterests() {
     return this.client.get(`${environment.apiBaseUrl}/interests/`);
+  }
+
+  dwollaRegistration(dwollaRegistrationInfo: DwollaRegistrationInfo) {
+    return this.client.post(`${environment.apiBaseUrl}/users/dwolla/register/`, dwollaRegistrationInfo)
+      .pipe(
+        switchMap(value => this.client.post<{iav_token: string}>(`${environment.apiBaseUrl}/users/dwolla/wallets/iav/`, null)),
+        tap(x => console.log(x.iav_token))
+      );
   }
 }
