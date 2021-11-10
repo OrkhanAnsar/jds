@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoadingService } from 'src/app/shared/loading.service';
+import { WalletInfo } from '../wallet.model';
+import { WalletService } from '../wallet.service';
 
 @Component({
   selector: 'app-topup',
@@ -8,38 +12,33 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class TopupComponent implements OnInit {
 
-  // processForm: FormGroup = this.fb .group({
-  //   card: ['', [Validators.required]],
-  //   amount: ['', [Validators.required]],
-  //   process: ['', [Validators.required]],
-  // })
+  transactionForm: FormGroup = this.fb.group({
+    from_wallet: ['', [Validators.required]],
+    sum: [null, [Validators.required, Validators.min(0)]],
+  })
 
-  public cards: { name: string, bank_name: string, status: string}[] = [
-    {
-      name: "John",
-      surname: "Smith",
-      digits: 9356,
-      cardType: "Master Card"
-    },
-    {
-      name: "Adam",
-      surname: "Brown",
-      digits: 2834,
-      cardType: 'Visa'
-    },
-    {
-      name: "John",
-      surname: "Smith",
-      digits: 9356,
-      cardType: "Master Card"
-    },
-  ]
+  public wallets: WalletInfo[] = []
 
-  constructor( ) { }
-
+  constructor(private fb: FormBuilder, private walletService: WalletService, private loadingService: LoadingService, private router: Router) { }
 
   ngOnInit() {
-
+    this.loadingService.present();
+    this.walletService.getWallets()
+      .subscribe({
+        next: data => {
+          this.wallets = data;
+        },
+        complete: () => {
+          this.loadingService.stop();
+        }
+      });
   }
 
+  onSubmit() {
+    this.walletService.topUp(this.transactionForm.value)
+      .subscribe({
+        next: _ => this.router.navigate(['/user/wallet']),
+        complete: () => this.loadingService.stop()
+      });
+  }
 }

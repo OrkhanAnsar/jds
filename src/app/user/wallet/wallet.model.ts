@@ -9,3 +9,8 @@ export interface WalletBalance {
     name: string;
     value: string;
 }
+
+export interface TopUpInfo {
+    from_wallet: string;
+    sum: number;
+}

@@ -6,6 +6,7 @@ import { WalletComponent } from './wallet.component';
 import { IonicModule } from '@ionic/angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { TopupComponent } from './topup/topup.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { TopupComponent } from './topup/topup.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     WalletRoutingModule,
     IonicModule
   ]
