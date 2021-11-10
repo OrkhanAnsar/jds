@@ -1,0 +1,66 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-img src="../../assets/interests.jpg"></ion-img>
+        <ion-text color="primary">
+          <h2>We're almost there!</h2>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="10">
+
+        <form [formGroup]="interestsForm" (ngSubmit)="onSubmit()">
+          <ion-text>
+            <h5>What you do?</h5>
+          </ion-text>
+
+          <ion-item lines="none">
+            <ion-select class="input select" formControlName="interest1" placeholder="Interest/Hobbie 1">
+              <ion-select-option
+                *ngFor="let interest of interests"
+                [value]="interest.value"
+              >{{interest.text}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-select class="input select" formControlName="interest2" placeholder="Interest 2">
+              <ion-select-option
+                *ngFor="let interest of interests"
+                [value]="interest.value"
+              >{{interest.text}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-select class="input select" formControlName="interest3" placeholder="Interest 3">
+              <ion-select-option
+                *ngFor="let interest of interests"
+                [value]="interest.value"
+              >{{interest.text}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-text>
+            Tell us more about you to we can find you a perfect match!
+          </ion-text>
+
+          <ion-textarea class="input" formControlName="about" placeholder="Write something about yourself...">
+          </ion-textarea>
+
+          <ion-item>
+            <ion-label class="ion-text-wrap">By pressing 'Next' button you agree 
+              <a class="ion-text-center link" href="https://google.com/">Terms and Conditions</a></ion-label>
+            <ion-checkbox slot="start" formControlName="acceptance"></ion-checkbox>
+          </ion-item>
+
+          <ion-button class="button" expand="block" type="submit" [disabled]="!interestsForm.valid">Register
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

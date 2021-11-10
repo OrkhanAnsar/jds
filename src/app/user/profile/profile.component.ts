@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserInfo } from '../user.model';
 import { UserService } from '../user.service';
 
 @Component({
@@ -9,20 +10,18 @@ import { UserService } from '../user.service';
 })
 export class ProfileComponent implements OnInit {
 
+  userInfo: UserInfo;
+
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.userService.getUser()
-      .then(user => console.log(user))
+      .then(user => console.log(this.userInfo = user))
       .catch(err => console.log(err));
   }
 
-  signOut() {
-    this.userService.signOut();
+  async signOut() {
+    await this.userService.signOut();
     this.router.navigate(['auth']);
-  }
-
-  async getInfo() {
-    console.log(await this.userService.getInfo());
   }
 }

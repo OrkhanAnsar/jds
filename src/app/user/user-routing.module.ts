@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'coupons',
+        redirectTo: 'profile',
         pathMatch: 'full'
       },
       {
@@ -19,7 +19,11 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
-      }
+      },
+      {
+        path: 'wallet',
+        loadChildren: () => import('./wallet/wallet.module').then(m => m.WalletModule)
+      },
     ]
   },
   {

@@ -6,12 +6,16 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { InterestsComponent } from './interests/interests.component';
+import { DwollaRegisterComponent } from './dwolla-register/dwolla-register.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    InterestsComponent,
+    DwollaRegisterComponent
   ],
   imports: [
     CommonModule,

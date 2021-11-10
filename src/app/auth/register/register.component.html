@@ -11,12 +11,12 @@
 
           <ion-item lines="none">
             <ion-label>First Name</ion-label>
-            <ion-input class="input" formControlName="firstName" placeholder="First Name" ngDefaultControl></ion-input>
+            <ion-input class="input" formControlName="first_name" placeholder="First Name" ngDefaultControl></ion-input>
           </ion-item>
 
           <ion-item lines="none">
             <ion-label>Last name</ion-label>
-            <ion-input class="input" formControlName="lastName" placeholder="Last Name" ngDefaultControl></ion-input>
+            <ion-input class="input" formControlName="last_name" placeholder="Last Name" ngDefaultControl></ion-input>
           </ion-item>
 
           <ion-item lines="none">
@@ -39,20 +39,15 @@
 
           <ion-item lines="none">
             <ion-label>Birth date</ion-label>
-            <ion-datetime class="input" formControlName="birthDate" ngDefaultControl placeholder="Birth Date"
-              displayFormat="YYYY-MM-DD" max="2003-11-02">
+            <ion-datetime class="input" formControlName="birth_date" ngDefaultControl placeholder="Birth Date"
+              displayFormat="YYYY-MM-DD" [max]="_18yearsAgo">
             </ion-datetime>
           </ion-item>
-
-          <!-- <ion-item lines="none">
-            <ion-label>State</ion-label>
-            <ion-input class="input" formControlName="state" placeholder="State" ngDefaultControl></ion-input>
-          </ion-item> -->
 
           <ion-list>
             <ion-item lines="none">
               <ion-label>State</ion-label>
-              <ion-select class="input select" formControlName="state">
+              <ion-select class="input select" formControlName="state" placeholder="Pick your state">
                 <ion-select-option
                   *ngFor="let state of states"
                   [value]="state.value"
@@ -85,7 +80,8 @@
             </ion-radio-group>
           </ion-list>
 
-          <ion-button type="submit" expand="block" [disabled]="!registerForm.valid">Register</ion-button>
+          <ion-button type="submit" expand="block" [disabled]="!registerForm.valid">Next</ion-button>
+          <!-- <ion-button type="submit" expand="block">Next</ion-button> -->
         </form>
         <!-- <a routerLink="../">Sign In</a> -->
       </ion-col>

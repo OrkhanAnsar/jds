@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from '../shared/error-page/error-page.component';
+import { DwollaRegisterComponent } from './dwolla-register/dwolla-register.component';
+import { InterestsComponent } from './interests/interests.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -17,6 +19,14 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'interests',
+    component: InterestsComponent
+  },
+  {
+    path: 'dwolla-registration',
+    component: DwollaRegisterComponent
   },
   {
     path: '**',

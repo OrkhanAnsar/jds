@@ -4,15 +4,22 @@ export interface LoginInfo {
 };
 
 export interface RegisterInfo {
-    firstName: string;
-    lastName: string;
+    first_name: string;
+    last_name: string;
     email: string;
     username: string;
     password: string;
-    birthDate: string;
+    birth_date: string;
     gender: number;
     state: string;
     city: string;
+}
+
+export interface InterestsInfo {
+    interest1: string;
+    interest2: string;
+    interest3: string;
+    about: string;
 }
 
 export interface RegisterVendorInfo {
@@ -30,3 +37,9 @@ export interface AuthResponse {
     id: number;
     token: string;
 };
+
+export interface DwollaRegistrationInfo {
+    address: string;
+    postal_code: string;
+    ssn: string;
+}

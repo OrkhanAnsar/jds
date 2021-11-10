@@ -6,7 +6,68 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-button (click)="signOut()">Sign out</ion-button>
-  <ion-button (click)="getInfo()">GetInfo</ion-button>
+<ion-content [fullscreen]="true" [ngClass]="{'profile-content': userInfo}">
+  <p *ngIf="!userInfo">Loading...</p>
+  <ion-grid *ngIf="userInfo">
+
+    <!-- UserInfo -->
+    <ion-row class="user-info" >
+      <ion-col >
+        <ion-item lines="none">
+          <ion-avatar slot="start" class="profile-picture">
+            <img *ngIf="userInfo?.photos?.length"
+              src="https://techcommunity.microsoft.com/t5/image/serverpage/image-id/217078i525F6A9EF292601F/image-size/large?v=v2&px=999">
+            <img *ngIf="!userInfo?.photos?.length"
+              src="https://techcommunity.microsoft.com/t5/image/serverpage/image-id/217078i525F6A9EF292601F/image-size/large?v=v2&px=999">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{userInfo.first_name}} {{userInfo.last_name}}</h2>
+            <p>
+              <ion-icon name="location"></ion-icon> {{userInfo.city}}, {{userInfo.state}}
+            </p>
+            <p>{{userInfo.birth_date | yearsCount}} years old</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="navigation-row">
+      <ion-card class="navigation-card">
+        <div>
+          <ion-button routerLink="../wallet" size="large">
+            <ion-icon slot="icon-only" name="wallet"></ion-icon>
+          </ion-button>
+          Wallet
+        </div>
+        <div>
+          <ion-button routerLink="../coupons" size="large">
+            <ion-icon slot="icon-only" name="albums"></ion-icon>
+          </ion-button>
+          Coupons
+        </div>
+        <div>
+          <ion-button routerLink="./" size="large">
+            <ion-icon slot="icon-only" name="images"></ion-icon>
+          </ion-button>
+          Gallery
+        </div>
+        <div>
+          <ion-button routerLink="./" size="large">
+            <ion-icon slot="icon-only" name="create"></ion-icon>
+          </ion-button>
+          Edit Profile
+        </div>
+      </ion-card>
+    </ion-row>
+
+    <ion-row>
+      <ion-card class="bio-card">
+        <ion-text>
+          {{userInfo.bio ?? 'Bio is empty...'}}
+        </ion-text>
+      </ion-card>
+    </ion-row>
+    
+    <ion-button (click)="signOut()" color="dark" expand="block">Sign Out</ion-button>
+  </ion-grid>
 </ion-content>

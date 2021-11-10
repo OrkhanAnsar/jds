@@ -1,0 +1,63 @@
+ion-grid {
+    --ion-grid-padding: 0px;
+}
+ion-button {
+    --background-activated: grey;
+}
+ion-row.user-info {
+    // background-size: contain;
+    --background: none;
+    background-image: url("../../../assets/background.jpg");
+    // background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px 0px 60px 0px;
+}
+ion-label h2{
+    font-size: 19px;
+    letter-spacing: 2px;
+}
+
+.user-info {
+    --ion-background-color: transparent;
+    margin-top: 0px;
+}
+
+.profile-picture {
+    width: 140px;
+    height: 140px;
+    margin-right: 7px;
+}
+
+.navigation-row {
+    margin-top: -10%;
+}
+
+.navigation-card {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-around;
+    border-radius: 30px;
+    padding: 10px;
+    margin: 0;
+}
+
+.navigation-card div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navigation-card div ion-button {
+    --color: black;
+    --background: transparent;
+    --box-shadow: 0;
+}
+
+.bio-card {
+    margin-top: 7px;
+    width: 100%;
+    min-height: 60px;
+    padding: 15px;
+    font-size: 17px;
+}
