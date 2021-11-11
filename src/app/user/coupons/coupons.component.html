@@ -7,6 +7,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  content
+  <ion-row class="ion-margin-horizontal">
+    <ion-col *ngFor="let food of food_details" size="6">
+      <ion-card>
+        <img src="../../../assets/friedsausages.jpg" />
+        <ion-card-header class="ion-no-padding" >
+          <h5 class="ion-no-margin">{{food.restaurant}}</h5>
+          <h6 class="ion-no-margin">{{food.price}}$</h6>
+          <p class="ion-no-margin">Dinner for two</p>
+        </ion-card-header>
+      </ion-card>
+
+    </ion-col>
+  </ion-row>
 
 </ion-content>
