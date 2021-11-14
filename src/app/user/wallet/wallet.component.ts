@@ -12,7 +12,7 @@ export class WalletComponent implements OnInit {
   wallets: WalletInfo[] = [];
   balance: string = '---';
 
-  transactions: { reason: string, details: string, price: number } [] = [
+  transactions: { reason: string, details: string, price: number }[] = [
 
   ];
 
@@ -24,7 +24,7 @@ export class WalletComponent implements OnInit {
         data => this.wallets = data
       );
 
-        this.walletService.getBalance().subscribe(data => this.balance = data.value);
+    this.walletService.getBalance().subscribe(data => this.balance = data.value);
   }
 
 }

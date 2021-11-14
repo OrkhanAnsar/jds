@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
-import { LoginInfo, RegisterInfo, AuthResponse, RegisterVendorInfo, InterestsInfo, DwollaRegistrationInfo } from './auth.model';
+import { LoginInfo, RegisterInfo, AuthResponse, InterestsInfo, DwollaRegistrationInfo } from './auth.model';
 import { StorageService } from '../shared/storage.service';
 import { Router } from '@angular/router';
-import { LoadingService } from '../shared/loading.service';
 
-import { iif, Observable, pipe } from 'rxjs';
 import { delay, switchMap, tap } from 'rxjs/operators';
 
 @Injectable({

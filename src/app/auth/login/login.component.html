@@ -11,9 +11,15 @@
           <p>Username</p>
           <ion-input class="input" formControlName="username" placeholder="Enter your username" ngDefaultControl>
           </ion-input>
+          <div *ngIf="username.invalid && (username.dirty || username.touched)">
+            <p *ngIf="username.errors?.['required']">Username is required</p>
+          </div>
           <p>Password</p>
           <ion-input class="input" formControlName="password" placeholder="Enter your password" ngDefaultControl
             type="password"></ion-input>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            <p *ngIf="password.errors?.['required']">Password is required</p>
+          </div>
           <ion-button class="button" expand="block" type="submit" [disabled]="!loginForm.valid">Login
           </ion-button>
         </form>

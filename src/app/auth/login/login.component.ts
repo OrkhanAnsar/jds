@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { OverlayService } from 'src/app/shared/overlay.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -15,13 +16,29 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required]
   })
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private overlayService: OverlayService) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
+    this.overlayService.loading();
     this.authService.loginUser(this.loginForm.value)
-      .subscribe(() => this.router.navigate(['user']));
+      .subscribe({
+        next: () => this.router.navigate(['user']),
+        error: () => this.overlayService.error(),
+        complete: () => this.overlayService.stopLoading()
+      });
+  }
+
+  get username() {
+    return this.loginForm.get('username');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
   }
 }

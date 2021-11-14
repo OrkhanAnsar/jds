@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoadingService } from 'src/app/shared/loading.service';
+import { OverlayService } from 'src/app/shared/overlay.service';
 import { WalletInfo } from '../wallet.model';
 import { WalletService } from '../wallet.service';
 
@@ -14,31 +14,34 @@ export class TopupComponent implements OnInit {
 
   transactionForm: FormGroup = this.fb.group({
     from_wallet: ['', [Validators.required]],
-    sum: [null, [Validators.required, Validators.min(0)]],
+    sum: [null, [Validators.required, Validators.min(1)]],
   })
 
   public wallets: WalletInfo[] = []
 
-  constructor(private fb: FormBuilder, private walletService: WalletService, private loadingService: LoadingService, private router: Router) { }
+  constructor(private fb: FormBuilder, private walletService: WalletService, private overlayService: OverlayService, private router: Router) { }
 
   ngOnInit() {
-    this.loadingService.present();
+    this.overlayService.loading();
     this.walletService.getWallets()
       .subscribe({
         next: data => {
           this.wallets = data;
         },
+        error: err => this.overlayService.error(),
         complete: () => {
-          this.loadingService.stop();
+          this.overlayService.stopLoading();
         }
       });
   }
 
   onSubmit() {
+    this.overlayService.loading();
     this.walletService.topUp(this.transactionForm.value)
       .subscribe({
         next: _ => this.router.navigate(['/user/wallet']),
-        complete: () => this.loadingService.stop()
+        error: () => this.overlayService.error(),
+        complete: () => this.overlayService.stopLoading()
       });
   }
 }
