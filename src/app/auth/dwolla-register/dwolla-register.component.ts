@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { OverlayService } from 'src/app/shared/overlay.service';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth.service';
 declare const dwolla: any;
 
@@ -32,7 +33,7 @@ export class DwollaRegisterComponent implements OnInit {
         next: data => {
           console.log(data);
           // this.iavFrameUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://sandbox.dwolla.com/fi/token/${data.iav_token}`);
-          dwolla.configure('sandbox');
+          dwolla.configure(environment.dwollaMode);
           this.iavFlag = true;
           dwolla.iav.start(
             data.iav_token,

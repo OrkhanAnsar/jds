@@ -39,8 +39,8 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.overlayService.loading();
-    this.authService.userInfo = this.registerForm.value;
+    // this.overlayService.loading();
+    this.authService.userInfo = this.registerForm.value
     this.router.navigate(['auth/interests']);
   }
 

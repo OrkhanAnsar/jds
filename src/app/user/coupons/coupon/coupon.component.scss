@@ -1,0 +1,42 @@
+// restaurant section
+ion-row.user-info {
+    // background-size: contain;
+    --background: none;
+    background-image: url("../../../../assets/background_vendor.jpg");
+    // background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10px 0px;
+    // opacity: 0.15;
+}
+.profile-picture {
+    width: 140px;
+    height: 140px;
+    margin-right: 7px;
+}
+
+ion-grid {
+    --ion-grid-padding: 0px;
+}
+
+ion-label h2{
+    font-size: 19px;
+    letter-spacing: 2px;
+}
+
+.user-info {
+    --ion-background-color: transparent;
+    margin-top: 0px;
+}
+
+.profile-picture {
+    width: 140px;
+    height: 140px;
+    margin-right: 7px;
+}
+
+.overlay {
+    background-color:  rgba(255,255,255,0.7);
+}
+
+// meal info
