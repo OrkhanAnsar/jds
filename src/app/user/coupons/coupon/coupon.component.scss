@@ -6,37 +6,98 @@ ion-row.user-info {
     // background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 10px 0px;
-    // opacity: 0.15;
+    // padding: 10px 0px;
 }
 .profile-picture {
-    width: 140px;
-    height: 140px;
+    width: 70px;
+    height: 70px;
     margin-right: 7px;
 }
-
-ion-grid {
-    --ion-grid-padding: 0px;
+ion-item {
+    --padding-start: 0px;
 }
 
-ion-label h2{
-    font-size: 19px;
-    letter-spacing: 2px;
+ion-label h2 {
+    color: black;
+    font-weight: 600;
+    margin-bottom: 7px;
+    
 }
-
+ion-icon {
+    margin-right: 4px;
+}
+p {
+    margin-bottom: 7px;
+    color: black;
+    font-weight: 500;
+}
 .user-info {
     --ion-background-color: transparent;
-    margin-top: 0px;
-}
-
-.profile-picture {
-    width: 140px;
-    height: 140px;
-    margin-right: 7px;
 }
 
 .overlay {
-    background-color:  rgba(255,255,255,0.7);
+    background-color: rgba(255, 255, 255, 0.747);
 }
 
 // meal info
+.food-info img {
+    border-radius: 10px;
+}
+.food-info p {
+    margin: 0px;
+}
+.text-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+.food-desc {
+    font-size: 13px;
+}
+.food-ings {
+    color: rgb(146, 146, 146);
+    font-size: 11px;
+}
+.expiration-text {
+    color: rgb(146, 146, 146);
+}
+
+// <!-- options -->
+
+ion-label {
+    font-size: 13px;
+    font-weight: normal;
+}
+.old-price{
+    color: red;
+    text-decoration: line-through;
+}
+.new-price{
+    color: rgb(69, 148, 69);
+}
+.price{
+    font-size: 13px;
+    color: rgb(69, 148, 69);
+}
+.total{
+    text-align: right;
+    color: rgb(37, 97, 153);
+}
+
+// global css
+ion-button {
+    --background: #000;
+    --border-radius: 20px;
+    --color: white;
+    --font-size: 70px;
+    // --padding-start: 40px;
+    // --padding-end: 40px;
+}
+.button {
+    font-size: 15px;
+}
+.button-align{
+    display: flex;
+    justify-content: center;
+}
