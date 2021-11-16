@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { WalletInfo } from './wallet.model';
 import { WalletService } from './wallet.service';
 
@@ -16,9 +17,13 @@ export class WalletComponent implements OnInit {
 
   ];
 
-  constructor(private walletService: WalletService) { }
-
+  constructor(private walletService: WalletService, private route: ActivatedRoute) { }
+  
   ngOnInit() {
+    this.route.url.subscribe(() => this.init())
+  }
+
+  init() {
     this.walletService.getWallets()
       .subscribe(
         data => this.wallets = data
@@ -26,5 +31,4 @@ export class WalletComponent implements OnInit {
 
     this.walletService.getBalance().subscribe(data => this.balance = data.value);
   }
-
 }

@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.overlayService.loading();
     this.authService.userInfo = this.registerForm.value
     this.router.navigate(['auth/interests']);
   }
@@ -67,10 +66,5 @@ export class RegisterComponent implements OnInit {
   }
   get city() {
     return this.registerForm.get('city');
-  }
-
-  change(e) {
-    console.log(e);
-    console.log('scdcd')
   }
 }

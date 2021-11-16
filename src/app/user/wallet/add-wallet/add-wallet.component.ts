@@ -32,6 +32,8 @@ export class AddWalletComponent implements OnInit {
             subscriber: (state) => {
               if (state.error) {
                 this.overlayService.error(state.error.message)
+              } else if (state.currentPage === 'BankSearch') {
+                this.overlayService.stopLoading();
               }
             },
           },
@@ -47,9 +49,6 @@ export class AddWalletComponent implements OnInit {
       error: err => {
         this.overlayService.error();
         this.router.navigate(['/user/wallet']);
-      },
-      complete: () => {
-        this.overlayService.stopLoading();
       }
     })
 
