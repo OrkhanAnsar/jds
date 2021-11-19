@@ -9,7 +9,7 @@ const routes: Routes = [
     component: CouponsComponent
   },
   {
-    path: 'coupon',
+    path: 'coupon/:id',
     component: CouponComponent
   },
   {

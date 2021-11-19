@@ -9,7 +9,7 @@
 <ion-content>
   <ion-row class="ion-margin-horizontal">
     <ion-col *ngFor="let coupon of coupons" size="6">
-      <ion-card routerLink="/user/coupons/coupon">
+      <ion-card [routerLink]="['/user/coupons/coupon/', coupon.id]">
         <img src="../../../assets/friedsausages.jpg" />
         <ion-card-header class="ion-no-padding">
           <h5 class="ion-no-margin">{{coupon.name}}</h5>

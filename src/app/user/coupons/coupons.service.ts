@@ -14,4 +14,8 @@ export class CouponsService {
   getAll(): Observable<Coupon[]> {
     return this.client.get<Coupon[]>(`${environment.apiBaseUrl}/coupons`);
   }
+
+  get(id: number): Observable<Coupon> {
+    return this.client.get<Coupon>(`${environment.apiBaseUrl}/coupons/${id}`)
+  }
 }

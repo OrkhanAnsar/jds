@@ -1,79 +1,76 @@
 <ion-content>
-  <!-- restaurant info -->
-  <ion-row class="user-info">
-    <ion-col class="overlay ion-padding">
-      <ion-item class="ion-align-items-start" lines="none">
-        <ion-avatar slot="start" class="profile-picture">
-          <img src="../../../../assets/friedsausages.jpg">
-        </ion-avatar>
-        <ion-label>
-          <h2>Loco Grill & Steak House</h2>
-          <p>
-            <ion-icon name="location"></ion-icon>New York
-          </p>
-          <p>
-            <ion-icon name="time"></ion-icon>Working hours: 10AM - 22
-          </p>
-          <p>
-            <ion-icon name="star"></ion-icon>4.5 out of 5
-          </p>
-        </ion-label>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <!-- restaurant info -->
+    <ion-row class="user-info">
+      <ion-col class="overlay ion-padding">
+        <ion-item class="ion-align-items-start" lines="none">
+          <ion-avatar slot="start" class="profile-picture">
+            <img src="../../../../assets/friedsausages.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h2>Loco Grill & Steak House</h2>
+            <p>
+              <ion-icon name="location"></ion-icon>New York
+            </p>
+            <p>
+              <ion-icon name="time"></ion-icon>Working hours: 10AM - 22
+            </p>
+            <p>
+              <ion-icon name="star"></ion-icon>4.5 out of 5
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <!-- food info -->
-  <ion-row class="ion-padding-horizontal ion-padding-top food-info">
-    <ion-col class="ion-no-padding ion-align-self-center" size="5">
-      <img src="../../../../assets/friedsausages.jpg" class="food-img">
-    </ion-col>
-    <ion-col size="7" class="text-info ion-padding-start">
-      <p class="food-desc">Assorted fried sausages on a grill on a wooden board</p>
-      <p class="food-ings">Grilled meat skewers, chicken kebab with zucchini, tomatoes and red onions</p>
-    </ion-col>
-    <ion-col size="12" class="ion-text-center expiration-text">
-      <h6>Expires on 26.06.2022</h6>
-    </ion-col>
-  </ion-row>
+    <!-- food info -->
+    <ion-row class="ion-padding-horizontal ion-padding-top food-info">
+      <ion-col class="ion-no-padding ion-align-self-center" size="5">
+        <img src="../../../../assets/friedsausages.jpg" class="food-img">
+      </ion-col>
+      <ion-col size="7" class="text-info ion-padding-start">
+        <p class="food-desc">{{coupon.name}}</p>
+        <p class="food-ings">Grilled meat skewers, chicken kebab with zucchini, tomatoes and red onions</p>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center expiration-text">
+        <h6>Expires on 26.06.2022</h6>
+      </ion-col>
+    </ion-row>
 
-  <!-- options --> 
-  <ion-row>
-    <ion-col class="ion-padding-horizontal" size="12">
-      <p class="ion-float-left">Assorted fried sausages on a grill for two </p>
-      <div class="price ion-float-right">
-        <p class="old-price">45.99</p>
-        <p class="new-price">33.90</p>
-      </div>
-    </ion-col>
-
-
-    <ion-col class="ion-padding-horizontal">
-      <ion-list lines="none">
-        <ion-radio-group ngDefaultControl>
-          <p style="margin: 0px;">Extra options:</p>
-          <ion-item>
-            <ion-label>Option 1</ion-label>
-            <ion-radio slot="start" value="1"></ion-radio>
-            <p class="price">+3$</p>
-          </ion-item>
-
-          <ion-item lines="full">
-            <ion-label>Option 2</ion-label>
-            <ion-radio slot="start" value="0"></ion-radio>
-            <p class="price">+5$</p>
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
-      <p class="total">Total price: 35$</p>
-    </ion-col>
-  </ion-row>
-  <ion-row class="ion-align-items-center button-align">
-    <ion-col class="ion-text-center" size="7">
-      <ion-button expand="block" class="button">Buy Now</ion-button>
-    </ion-col>
-  </ion-row>
+    <!-- options -->
+    <ion-row>
+      <ion-col class="ion-padding-horizontal" size="12">
+        <p class="ion-float-left">Assorted fried sausages on a grill for two </p>
+        <div class="price ion-float-right">
+          <p class="old-price">45.99</p>
+          <p class="new-price">33.90</p>
+        </div>
+      </ion-col>
 
 
+      <ion-col class="ion-padding-horizontal">
+        <ion-list lines="none">
+          <ion-radio-group ngDefaultControl>
+            <p style="margin: 0px;">Extra options:</p>
+            <ion-item>
+              <ion-label>Option 1</ion-label>
+              <ion-radio slot="start" value="1"></ion-radio>
+              <p class="price">+3$</p>
+            </ion-item>
 
+            <ion-item lines="full">
+              <ion-label>Option 2</ion-label>
+              <ion-radio slot="start" value="0"></ion-radio>
+              <p class="price">+5$</p>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        <p class="total">Total price: 35$</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center button-align">
+      <ion-col class="ion-text-center" size="7">
+        <ion-button expand="block" class="button">Buy Now</ion-button>
+      </ion-col>
+    </ion-row>
 
 </ion-content>
