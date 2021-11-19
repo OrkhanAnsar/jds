@@ -1,4 +1,5 @@
 <ion-content>
+  <ion-grid *ngIf="coupon">
     <!-- restaurant info -->
     <ion-row class="user-info">
       <ion-col class="overlay ion-padding">
@@ -29,7 +30,7 @@
       </ion-col>
       <ion-col size="7" class="text-info ion-padding-start">
         <p class="food-desc">{{coupon.name}}</p>
-        <p class="food-ings">Grilled meat skewers, chicken kebab with zucchini, tomatoes and red onions</p>
+        <p class="food-ings">{{coupon.desc}}</p>
       </ion-col>
       <ion-col size="12" class="ion-text-center expiration-text">
         <h6>Expires on 26.06.2022</h6>
@@ -72,5 +73,5 @@
         <ion-button expand="block" class="button">Buy Now</ion-button>
       </ion-col>
     </ion-row>
-
+  </ion-grid>
 </ion-content>
