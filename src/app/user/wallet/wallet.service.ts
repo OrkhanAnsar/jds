@@ -19,6 +19,11 @@ export class WalletService {
   }
 
   topUp(topUpInfo: TopUpInfo) {
-    return this.client.post(`${environment.apiBaseUrl}/users/dwolla/balance/top-up/`, topUpInfo);  
+    return this.client.post(`${environment.apiBaseUrl}/users/dwolla/balance/top-up/`, topUpInfo);
   }
+
+  getIavToken() {
+    return this.client.post<{ iav_token: string }>(`${environment.apiBaseUrl}/users/dwolla/wallets/iav/`, null)
+  }
+
 }

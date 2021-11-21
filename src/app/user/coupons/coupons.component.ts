@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { OverlayService } from 'src/app/shared/overlay.service';
+import { Coupon } from './coupons.model';
+import { CouponsService } from './coupons.service';
 
 @Component({
   selector: 'app-coupons',
@@ -6,45 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./coupons.component.scss'],
 })
 export class CouponsComponent implements OnInit {
+  coupons: Coupon[] = [];
 
-  public food_details: { restaurant: string, price: number}[] = [
-    {
-      restaurant: 'Dinero',
-      price: 56
-    },
-    {
-      restaurant: 'Metadore',
-      price: 73
-    },
-    {
-      restaurant: 'Zakura',
-      price: 73
-    },
-    {
-      restaurant: "BJ's Brewhouse",
-      price: 47
-    },
-    {
-      restaurant: 'Dinero',
-      price: 56
-    },
-    {
-      restaurant: 'Metadore',
-      price: 73
-    },
-    {
-      restaurant: 'Zakura',
-      price: 73
-    },
-    {
-      restaurant: "BJ's Brewhouse",
-      price: 47
-    },
-  ]
+  constructor(private couponsService: CouponsService, private overlayService: OverlayService) { }
 
-
-  constructor() { }
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.overlayService.loading();
+    this.couponsService.getAll()
+      .subscribe({
+        next: data => this.coupons = data,
+        error: err => this.overlayService.error(),
+        complete: () => this.overlayService.stopLoading()
+      });
+  }
 
 }
