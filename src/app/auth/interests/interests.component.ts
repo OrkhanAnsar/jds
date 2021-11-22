@@ -35,20 +35,18 @@ export class InterestsComponent implements OnInit {
       )
       .subscribe({
         next: data => this.interests = data,
-        error: err => this.overlayService.error(),
+        error: err => this.overlayService.error(err),
         complete: () => this.overlayService.stopLoading()
       });
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.overlayService.loading();
 
-    this.authService.userInterests = this.interestsForm.value;
-
-    this.authService.registerUser()
+    (await this.authService.applyInterests(this.interestsForm.value))
       .subscribe({
         next: data => this.router.navigate(['auth/dwolla-registration']),
-        error: err => this.overlayService.error(),
+        error: err => this.overlayService.error(err),
         complete: () => this.overlayService.stopLoading()
       });
   }

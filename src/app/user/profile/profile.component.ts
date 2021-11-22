@@ -19,16 +19,20 @@ export class ProfileComponent implements OnInit {
     this.route.url.subscribe(() => this.init());
   }
 
-  init() {
+  init(): Promise<void | UserInfo> {
     this.overlayService.loading();
-    this.userService.getUser()
-      .then(user => console.log(this.userInfo = user))
-      .catch(err => this.overlayService.error())
+    return this.userService.getUser()
+      .then(user => this.userInfo = user)
+      .catch(err => this.overlayService.error(err))
       .finally(() => this.overlayService.stopLoading());
   }
 
   async signOut() {
     await this.userService.signOut();
     this.router.navigate(['auth']);
+  }
+
+  refresh(event) {
+    this.init().finally(() => event.target.complete());
   }
 }

@@ -27,8 +27,6 @@ export class AddWalletComponent implements OnInit {
             stylesheets: [
               'https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext'
             ],
-            microDeposits: true,
-            fallbackToMicroDeposits: true,
             subscriber: (state) => {
               if (state.error) {
                 this.overlayService.error(state.error.message)
@@ -47,7 +45,7 @@ export class AddWalletComponent implements OnInit {
 
       },
       error: err => {
-        this.overlayService.error();
+        this.overlayService.error(err);
         this.router.navigate(['/user/wallet']);
       }
     })

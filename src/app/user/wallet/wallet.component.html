@@ -8,6 +8,10 @@
 
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-row class="ion-justify-content-center">
     <ion-col size="12">
       <ion-row>
@@ -30,7 +34,7 @@
                   <p>{{wallet.status}}</p>
                 </ion-label>
               </ion-item>
-              <ion-button  expand="block"  [routerLink]="['/user/wallet/add-wallet']">Add Wallet</ion-button>
+              <ion-button expand="block" [routerLink]="['/user/wallet/add-wallet']">Add Wallet</ion-button>
 
             </ion-list>
           </div>

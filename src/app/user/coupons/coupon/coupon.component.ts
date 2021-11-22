@@ -11,29 +11,29 @@ import { CouponsService } from '../coupons.service';
   styleUrls: ['./coupon.component.scss'],
 })
 export class CouponComponent implements OnInit {
-
+  id;
   coupon: Coupon;
 
   constructor(private route: ActivatedRoute, private couponsService: CouponsService, private overlayService: OverlayService) { }
 
-
   ngOnInit() {
-
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.init();
+  }
+  
+  init() {
     this.overlayService.loading();
-    this.route.params
-      .pipe(
-        switchMap(data => this.couponsService.get(data.id))
-      )
+
+    this.couponsService.get(this.id)
       .subscribe({
         next: data => this.coupon = data,
-        error: err => this.overlayService.error(),
+        error: err => this.overlayService.error(err),
         complete: () => this.overlayService.stopLoading()
       });
-
-
-
-
-
   }
 
+  refresh(event) {
+    this.init();
+    event.target.complete();
+  }
 }

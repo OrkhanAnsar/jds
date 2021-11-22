@@ -11,6 +11,7 @@ export interface WalletBalance {
 }
 
 export interface TopUpInfo {
-    from_wallet: string;
+    wallet: string;
     sum: number;
+    direction: string; // 0 - Deposit, 1 - Withdraw
 }

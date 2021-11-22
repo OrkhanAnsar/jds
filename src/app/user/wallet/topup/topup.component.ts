@@ -13,8 +13,9 @@ import { WalletService } from '../wallet.service';
 export class TopupComponent implements OnInit {
 
   transactionForm: FormGroup = this.fb.group({
-    from_wallet: ['', [Validators.required]],
+    wallet: ['', [Validators.required]],
     sum: [null, [Validators.required, Validators.min(1)]],
+    direction: ['0']
   })
 
   public wallets: WalletInfo[] = []
@@ -28,7 +29,7 @@ export class TopupComponent implements OnInit {
         next: data => {
           this.wallets = data;
         },
-        error: err => this.overlayService.error(),
+        error: err => this.overlayService.error(err),
         complete: () => {
           this.overlayService.stopLoading();
         }
@@ -40,7 +41,7 @@ export class TopupComponent implements OnInit {
     this.walletService.topUp(this.transactionForm.value)
       .subscribe({
         next: _ => this.router.navigate(['/user/wallet']),
-        error: () => this.overlayService.error(),
+        error: err => this.overlayService.error(err),
         complete: () => this.overlayService.stopLoading()
       });
   }

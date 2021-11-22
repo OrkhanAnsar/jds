@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { forkJoin } from 'rxjs';
+import { OverlayService } from 'src/app/shared/overlay.service';
 import { WalletInfo } from './wallet.model';
 import { WalletService } from './wallet.service';
 
@@ -17,18 +19,32 @@ export class WalletComponent implements OnInit {
 
   ];
 
-  constructor(private walletService: WalletService, private route: ActivatedRoute) { }
+  constructor(private walletService: WalletService, private route: ActivatedRoute, private overlayService: OverlayService) { }
   
   ngOnInit() {
     this.route.url.subscribe(() => this.init())
   }
 
   init() {
-    this.walletService.getWallets()
-      .subscribe(
-        data => this.wallets = data
-      );
+    this.overlayService.loading();
 
-    this.walletService.getBalance().subscribe(data => this.balance = data.value);
+    const observable = forkJoin({
+      wallets: this.walletService.getWallets(),
+      balance: this.walletService.getBalance()
+    })
+
+    observable.subscribe({
+      next: ({wallets, balance}) => {
+        this.wallets = wallets;
+        this.balance = balance.value;
+      },
+      error: err => this.overlayService.error(err),
+      complete: () => this.overlayService.stopLoading()
+    });
+  }
+
+  refresh(event) {
+    this.init();
+    event.target.complete();
   }
 }
