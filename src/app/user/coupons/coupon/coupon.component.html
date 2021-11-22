@@ -37,17 +37,17 @@
         <p class="food-ings">{{coupon.desc}}</p>
       </ion-col>
       <ion-col size="12" class="ion-text-center expiration-text">
-        <h6>Expires on 26.06.2022</h6>
+        <p *ngIf="coupon.exp_date">Expires on {{coupon.exp_date}}</p>
       </ion-col>
     </ion-row>
 
     <!-- options -->
     <ion-row>
       <ion-col class="ion-padding-horizontal" size="12">
-        <p class="ion-float-left">Assorted fried sausages on a grill for two </p>
+        <p class="ion-float-left">{{coupon.short_desc}} </p>
         <div class="price ion-float-right">
           <p class="old-price">45.99</p>
-          <p class="new-price">33.90</p>
+          <p class="new-price">{{coupon.price}}</p>
         </div>
       </ion-col>
 
