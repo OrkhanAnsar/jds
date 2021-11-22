@@ -7,10 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { TopupComponent } from './topup/topup.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddWalletComponent } from './add-wallet/add-wallet.component';
 
 
 @NgModule({
   declarations: [
+    AddWalletComponent,
     WalletComponent,
     TopupComponent
   ],
