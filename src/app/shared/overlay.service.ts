@@ -10,6 +10,19 @@ export class OverlayService {
 
   constructor(private loadingController: LoadingController, private alertController: AlertController) { }
 
+  async loading(message?: string) {
+    this._loading = await this.loadingController.create({
+      message: message || 'Please wait...',
+      spinner: 'dots'
+    });
+
+    return this._loading.present();
+  }
+
+  stopLoading() {
+    return this._loading?.dismiss();
+  }
+
   async info(message: string) {
     await this.stopLoading();
     this._alert = await this.alertController.create({
@@ -24,29 +37,29 @@ export class OverlayService {
     return this._alert.present();
   }
 
-  async error(message?: string) {
+  async error(error?: string | any) {
     await this.stopLoading();
     this._alert = await this.alertController.create({
       buttons: [
         'OK'
       ],
-      message: message || 'Something went wrong...',
+      message: this.getErrorMessage(error),
       cssClass: 'error-alert'
     })
 
     return this._alert.present();
   }
 
-  async loading(message?: string) {
-    this._loading = await this.loadingController.create({
-      message: message || 'Please wait...',
-      spinner: 'dots'
-    });
+  private getErrorMessage(error) {
+    let message = '';
 
-    return this._loading.present();
-  }
-
-  stopLoading() {
-    return this._loading?.dismiss();
+    if (!error) message = 'Something went wrong...';
+    else if (typeof error === 'string') message = error;
+    else if (error?.status === 400 && error?.error?.description) message = error.error.description;
+    else if (error?.status === 401) message = 'Username or password are invalid';
+    else if (error?.status === 422) Object.keys(error.error).forEach(key => message += `${error.error[key].join('\n')}\n\n`);
+    else message = error.statusText;
+    
+    return message;
   }
 }

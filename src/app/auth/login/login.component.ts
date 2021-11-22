@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(this.loginForm.value)
       .subscribe({
         next: () => this.router.navigate(['user']),
-        error: () => this.overlayService.error(),
+        error: err => this.overlayService.error(err),
         complete: () => this.overlayService.stopLoading()
       });
   }

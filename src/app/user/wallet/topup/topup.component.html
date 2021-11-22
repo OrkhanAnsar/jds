@@ -6,7 +6,7 @@
                 <ion-item lines="none">
                     <ion-label>Wallet</ion-label>
 
-                    <ion-select class="input select" formControlName="from_wallet" placeholder="Pick your card">
+                    <ion-select class="input select" formControlName="wallet" placeholder="Pick your account">
                         <ion-select-option *ngFor="let wallet of wallets" [value]="wallet.id">{{wallet.name}}
                         </ion-select-option>
                     </ion-select>
@@ -20,20 +20,20 @@
                     </ion-input>
                 </ion-item>
 
-                <!-- radio process
-                    <ion-list lines="none">
-                        <ion-radio-group formControlName="process" >
-                            <ion-item>
-                                <ion-label>deposit</ion-label>
-                                <ion-radio slot="start" value="0"></ion-radio>
-                            </ion-item>
-        
-                            <ion-item>
-                                <ion-label>withdraw</ion-label>
-                                <ion-radio slot="start" value="1"></ion-radio>
-                            </ion-item>
-                        </ion-radio-group>
-                    </ion-list> -->
+                <!-- radio process -->
+                <ion-list lines="none">
+                    <ion-radio-group formControlName="direction">
+                        <ion-item>
+                            <ion-label>Deposit</ion-label>
+                            <ion-radio slot="start" value="0"></ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Withdraw</ion-label>
+                            <ion-radio slot="start" value="1"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
 
                 <!-- button -->
                 <ion-button class="button" type="submit" expand="block" [disabled]="!transactionForm.valid">Process
