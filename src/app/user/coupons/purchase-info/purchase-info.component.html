@@ -1,3 +1,52 @@
-<p>
-  purchase-info works!
-</p>
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="header">
+      <ion-col class="overlay ion-padding">
+        <h2>Loco Grill & Steak House</h2>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <h2 class="ion-text-center">Thanks for your purchase</h2>
+      </ion-col>
+    </ion-row>
+
+    <!-- food info -->
+    <ion-row class="ion-padding-horizontal ion-padding-top food-info">
+      <ion-col class="ion-no-padding ion-align-self-center" size="5">
+        <img src="../../../../assets/friedsausages.jpg" class="food-img">
+      </ion-col>
+      <ion-col size="7" class="text-info ion-padding-start">
+        <p class="food-desc">coupon name</p>
+        <p class="food-ings">coupon.desc</p>
+      </ion-col>
+    </ion-row>
+
+    <!-- coupon info -->
+    <ion-row class="coupon-info ion-margin ion-padding">
+      <ion-col size="6">Customer ID:</ion-col>
+      <ion-col class="ion-text-end ion-padding-bottom" size="6">#23423746:</ion-col>
+      <ion-col size="6">Coupon ID:</ion-col>
+      <ion-col class="ion-text-end  ion-padding-bottom" size="6">#23423746</ion-col>
+      <ion-col size="6">Coupon Status:</ion-col>
+      <ion-col class="ion-text-end  ion-padding-bottom" size="6">Active</ion-col>
+      <ion-col size="6">Expiration date:</ion-col>
+      <ion-col class="ion-text-end  ion-padding-bottom" size="6">08-12-2022</ion-col>
+      <ion-col size="6">Total Price:</ion-col>
+      <ion-col class="ion-text-end ion-no-padding" size="6">37$:</ion-col>
+    </ion-row>
+
+
+    <ion-row class="button-align">
+      <ion-col size="7" >
+        <ion-button  expand="block">Get the QR Code
+        </ion-button>
+      </ion-col>
+      <ion-col size="7" >
+        <ion-button class="button" expand="block">Return
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
