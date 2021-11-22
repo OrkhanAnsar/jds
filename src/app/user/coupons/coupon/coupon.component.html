@@ -11,7 +11,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-grid *ngIf="coupon">
+  <ion-grid *ngIf="coupon && vendor">
     <!-- restaurant info -->
     <ion-row class="user-info">
       <ion-col class="overlay ion-padding">
@@ -20,15 +20,15 @@
             <img src="../../../../assets/friedsausages.jpg">
           </ion-avatar>
           <ion-label>
-            <h2>Loco Grill & Steak House</h2>
+            <h2>{{vendor.name}}</h2>
             <p>
-              <ion-icon name="location"></ion-icon>New York
+              <ion-icon name="location"></ion-icon>{{vendor.city}}, {{vendor.state}}
             </p>
-            <p>
+            <!-- <p>
               <ion-icon name="time"></ion-icon>Working hours: 10AM - 22
-            </p>
+            </p> -->
             <p>
-              <ion-icon name="star"></ion-icon>4.5 out of 5
+              <ion-icon name="star"></ion-icon>{{vendor.rating ? vendor.rating + ' out of 5': 'Not rated'}}
             </p>
           </ion-label>
         </ion-item>
@@ -54,13 +54,13 @@
       <ion-col class="ion-padding-horizontal" size="12">
         <p class="ion-float-left">{{coupon.short_desc}} </p>
         <div class="price ion-float-right">
-          <p class="old-price">45.99</p>
+          <!-- <p class="old-price">45.99</p> -->
           <p class="new-price">{{coupon.price}}</p>
         </div>
       </ion-col>
 
 
-      <ion-col class="ion-padding-horizontal">
+      <!-- <ion-col class="ion-padding-horizontal">
         <ion-list lines="none">
           <ion-radio-group ngDefaultControl>
             <p style="margin: 0px;">Extra options:</p>
@@ -78,11 +78,11 @@
           </ion-radio-group>
         </ion-list>
         <p class="total">Total price: 35$</p>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
     <ion-row class="ion-align-items-center button-align">
       <ion-col class="ion-text-center" size="7">
-        <ion-button expand="block" class="button">Buy Now</ion-button>
+        <ion-button expand="block" class="button" (click)="buy()">Buy Now</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
