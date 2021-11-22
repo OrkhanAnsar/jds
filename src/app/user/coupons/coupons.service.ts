@@ -12,10 +12,10 @@ export class CouponsService {
   constructor(private client: HttpClient) { }
 
   getAll(): Observable<Coupon[]> {
-    return this.client.get<Coupon[]>(`${environment.apiBaseUrl}/coupons`);
+    return this.client.get<Coupon[]>(`${environment.apiBaseUrl}/coupons/`);
   }
 
   get(id: number): Observable<Coupon> {
-    return this.client.get<Coupon>(`${environment.apiBaseUrl}/coupons/${id}`)
+    return this.client.get<Coupon>(`${environment.apiBaseUrl}/coupons/${id}/`)
   }
 }
