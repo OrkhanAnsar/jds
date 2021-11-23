@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { OverlayService } from 'src/app/shared/overlay.service';
+import { PurchasedCoupon } from '../coupons.model';
+import { CouponsService } from '../coupons.service';
 
 @Component({
   selector: 'app-purchase-info',
@@ -7,8 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PurchaseInfoComponent implements OnInit {
 
-  constructor() { }
+  id;
+  coupon: PurchasedCoupon
 
-  ngOnInit() {}
+  constructor(private route: ActivatedRoute, private overlayService: OverlayService, private couponsService: CouponsService) { }
+
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.init();
+  }
+
+  init() {
+    this.overlayService.loading();
+
+    this.couponsService.getPurchased(this.id)
+      .subscribe({
+        next: coupon => console.log(this.coupon = coupon),
+        error: err => this.overlayService.error(err),
+        complete: () => this.overlayService.stopLoading()
+      });
+  }
 
 }

@@ -11,7 +11,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-grid *ngIf="coupon && vendor">
+  <ion-grid *ngIf="coupon">
     <!-- restaurant info -->
     <ion-row class="user-info">
       <ion-col class="overlay ion-padding">
@@ -20,15 +20,15 @@
             <img src="../../../../assets/friedsausages.jpg">
           </ion-avatar>
           <ion-label>
-            <h2>{{vendor.name}}</h2>
+            <h2>{{coupon.vendor_obj.name}}</h2>
             <p>
-              <ion-icon name="location"></ion-icon>{{vendor.city}}, {{vendor.state}}
+              <ion-icon name="location"></ion-icon>{{coupon.vendor_obj.city}}, {{coupon.vendor_obj.state}}
             </p>
             <!-- <p>
               <ion-icon name="time"></ion-icon>Working hours: 10AM - 22
             </p> -->
             <p>
-              <ion-icon name="star"></ion-icon>{{vendor.rating ? vendor.rating + ' out of 5': 'Not rated'}}
+              <ion-icon name="star"></ion-icon>{{coupon.vendor_obj.rating ? coupon.vendor_obj.rating + ' out of 5': 'Not rated'}}
             </p>
           </ion-label>
         </ion-item>
@@ -55,7 +55,7 @@
         <p class="ion-float-left">{{coupon.short_desc}} </p>
         <div class="price ion-float-right">
           <!-- <p class="old-price">45.99</p> -->
-          <p class="new-price">{{coupon.price}}</p>
+          <p class="new-price">{{coupon.price}}$</p>
         </div>
       </ion-col>
 
@@ -82,7 +82,7 @@
     </ion-row>
     <ion-row class="ion-align-items-center button-align">
       <ion-col class="ion-text-center" size="7">
-        <ion-button expand="block" class="button" (click)="buy()">Buy Now</ion-button>
+        <ion-button expand="block" class="button" (click)="purchase()">Buy Now</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

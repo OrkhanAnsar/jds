@@ -1,5 +1,6 @@
 export interface Coupon {
     id: number;
+    photo: number | number[]
     name: string;
     desc: string;
     short_desc: string;
@@ -7,6 +8,18 @@ export interface Coupon {
     price: number;
     type: number;
     vendor: number
+}
+
+export interface CouponDetails extends Coupon {
+    vendor_obj: Vendor,
+}
+
+export interface PurchasedCoupon {
+    id: number;
+    coupon: Coupon;
+    purchased_at: string;
+    redeemed_at: string;
+    redeemed_now: boolean;
 }
 
 export interface Vendor {
@@ -21,5 +34,4 @@ export interface Vendor {
     desc: string,
     website: string,
     rating: string,
-    photos: number[]
 }

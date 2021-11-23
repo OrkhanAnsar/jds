@@ -14,7 +14,7 @@ const routes: Routes = [
     component: CouponComponent
   },
   {
-    path: 'purchase-info',
+    path: 'purchase-info/:id',
     component: PurchaseInfoComponent
   },
   {
