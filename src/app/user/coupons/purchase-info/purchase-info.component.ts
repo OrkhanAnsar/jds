@@ -26,7 +26,7 @@ export class PurchaseInfoComponent implements OnInit {
 
     this.couponsService.getPurchased(this.id)
       .subscribe({
-        next: coupon => console.log(this.coupon = coupon),
+        next: coupon => this.coupon = coupon,
         error: err => this.overlayService.error(err),
         complete: () => this.overlayService.stopLoading()
       });

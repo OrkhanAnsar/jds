@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap, tap } from 'rxjs/operators';
 import { OverlayService } from 'src/app/shared/overlay.service';
-import { Coupon, CouponDetails, Vendor } from '../coupons.model';
+import { CouponDetails } from '../coupons.model';
 import { CouponsService } from '../coupons.service';
 
 @Component({
@@ -42,7 +41,7 @@ export class CouponComponent implements OnInit {
 
     this.couponsService.purchase(this.id)
       .subscribe({
-        next: () => this.router.navigate(['user/coupons/purchase-info', this.id]),
+        next: data => this.router.navigate(['user/coupons/purchase-info', data.id]),
         error: err => this.overlayService.error(err),
         complete: () => this.overlayService.stopLoading()
       });

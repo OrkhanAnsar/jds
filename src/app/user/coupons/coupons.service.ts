@@ -16,11 +16,11 @@ export class CouponsService {
   }
 
   get(id: number): Observable<CouponDetails> {
-    return this.client.get<CouponDetails>(`${environment.apiBaseUrl}/coupons/${id}/`)
+    return this.client.get<CouponDetails>(`${environment.apiBaseUrl}/coupons/${id}/`);
   }
 
   purchase(id: number) {
-    return this.client.post(`${environment.apiBaseUrl}/coupons/${id}/purchase/`, null);
+    return this.client.post<{id: number}>(`${environment.apiBaseUrl}/coupons/${id}/purchase/`, null);
   }
 
   getPurchased(id: number) {

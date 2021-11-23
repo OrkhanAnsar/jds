@@ -7,17 +7,17 @@ export interface Coupon {
     exp_date: string;
     price: number;
     type: number;
-    vendor: number
 }
 
 export interface CouponDetails extends Coupon {
-    vendor_obj: Vendor,
+    vendor: Vendor;
 }
 
 export interface PurchasedCoupon {
     id: number;
-    coupon: Coupon;
+    coupon: CouponDetails;
     purchased_at: string;
+    redeem_code: string;
     redeemed_at: string;
     redeemed_now: boolean;
 }

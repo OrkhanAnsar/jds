@@ -6,6 +6,7 @@ import { CouponsComponent } from './coupons.component';
 import { IonicModule } from '@ionic/angular';
 import { CouponComponent } from './coupon/coupon.component';
 import { PurchaseInfoComponent } from './purchase-info/purchase-info.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { PurchaseInfoComponent } from './purchase-info/purchase-info.component';
   imports: [
     CommonModule,
     CouponsRoutingModule,
-    IonicModule
+    IonicModule,
+    SharedModule
   ]
 })
 export class CouponsModule { }
