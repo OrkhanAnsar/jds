@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { TopUpInfo, WalletBalance, WalletInfo } from './wallet.model';
+import { TopUpInfo, Transaction, WalletBalance, WalletInfo } from './wallet.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,10 @@ export class WalletService {
 
   getBalance() {
     return this.client.get<WalletBalance>(`${environment.apiBaseUrl}/users/dwolla/balance/`);
+  }
+
+  getTransactions() {
+    return this.client.get<Transaction[]>(`${environment.apiBaseUrl}/users/dwolla/transfers/`);
   }
 
   topUp(topUpInfo: TopUpInfo) {
