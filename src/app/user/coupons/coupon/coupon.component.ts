@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OverlayService } from 'src/app/shared/overlay.service';
-import { Coupon } from '../coupons.model';
+import { CouponDetails } from '../coupons.model';
 import { CouponsService } from '../coupons.service';
 
 @Component({
@@ -12,15 +11,15 @@ import { CouponsService } from '../coupons.service';
 })
 export class CouponComponent implements OnInit {
   id;
-  coupon: Coupon;
+  coupon: CouponDetails;
 
-  constructor(private route: ActivatedRoute, private couponsService: CouponsService, private overlayService: OverlayService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private couponsService: CouponsService, private overlayService: OverlayService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.init();
   }
-  
+
   init() {
     this.overlayService.loading();
 
@@ -35,5 +34,16 @@ export class CouponComponent implements OnInit {
   refresh(event) {
     this.init();
     event.target.complete();
+  }
+
+  purchase() {
+    this.overlayService.loading();
+
+    this.couponsService.purchase(this.id)
+      .subscribe({
+        next: data => this.router.navigate(['user/coupons/purchase-info', data.id]),
+        error: err => this.overlayService.error(err),
+        complete: () => this.overlayService.stopLoading()
+      });
   }
 }

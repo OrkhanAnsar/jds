@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { InterestsComponent } from './interests/interests.component';
 import { DwollaRegisterComponent } from './dwolla-register/dwolla-register.component';
+import { DwollaAddAccountComponent } from './dwolla-add-account/dwolla-add-account.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DwollaRegisterComponent } from './dwolla-register/dwolla-register.compo
     LoginComponent,
     RegisterComponent,
     InterestsComponent,
-    DwollaRegisterComponent
+    DwollaRegisterComponent,
+    DwollaAddAccountComponent
   ],
   imports: [
     CommonModule,

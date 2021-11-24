@@ -1,3 +1,11 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title>
+          Coupon
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
@@ -12,15 +20,15 @@
             <img src="../../../../assets/friedsausages.jpg">
           </ion-avatar>
           <ion-label>
-            <h2>Loco Grill & Steak House</h2>
+            <h2>{{coupon.vendor.name}}</h2>
             <p>
-              <ion-icon name="location"></ion-icon>New York
+              <ion-icon name="location"></ion-icon>{{coupon.vendor.city}}, {{coupon.vendor.state}}
             </p>
-            <p>
+            <!-- <p>
               <ion-icon name="time"></ion-icon>Working hours: 10AM - 22
-            </p>
+            </p> -->
             <p>
-              <ion-icon name="star"></ion-icon>4.5 out of 5
+              <ion-icon name="star"></ion-icon>{{coupon.vendor.rating ? coupon.vendor.rating + ' out of 5': 'Not rated'}}
             </p>
           </ion-label>
         </ion-item>
@@ -37,22 +45,22 @@
         <p class="food-ings">{{coupon.desc}}</p>
       </ion-col>
       <ion-col size="12" class="ion-text-center expiration-text">
-        <h6>Expires on 26.06.2022</h6>
+        <p *ngIf="coupon.exp_date">Expires on {{coupon.exp_date}}</p>
       </ion-col>
     </ion-row>
 
     <!-- options -->
     <ion-row>
-      <ion-col class="ion-padding-horizontal" size="12">
-        <p class="ion-float-left">Assorted fried sausages on a grill for two </p>
+      <!-- <ion-col class="ion-padding-horizontal" size="12">
+        <p class="ion-float-left">{{coupon.short_desc}}</p>
         <div class="price ion-float-right">
           <p class="old-price">45.99</p>
-          <p class="new-price">33.90</p>
+          <p class="new-price">{{coupon.price}}$</p>
         </div>
-      </ion-col>
+      </ion-col> -->
 
 
-      <ion-col class="ion-padding-horizontal">
+      <!-- <ion-col class="ion-padding-horizontal">
         <ion-list lines="none">
           <ion-radio-group ngDefaultControl>
             <p style="margin: 0px;">Extra options:</p>
@@ -70,11 +78,12 @@
           </ion-radio-group>
         </ion-list>
         <p class="total">Total price: 35$</p>
-      </ion-col>
+      </ion-col> -->
+      <ion-text>Total price: {{coupon.price}}</ion-text>
     </ion-row>
     <ion-row class="ion-align-items-center button-align">
       <ion-col class="ion-text-center" size="7">
-        <ion-button expand="block" class="button">Buy Now</ion-button>
+        <ion-button expand="block" class="button" (click)="purchase()">Buy Now</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

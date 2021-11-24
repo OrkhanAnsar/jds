@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title>
+          Purchased Coupon
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding" *ngIf="coupon">
+    <ion-row class="header">
+      <ion-col class="overlay ion-padding">
+        <h2>{{coupon.coupon.vendor.name}}</h2>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <h2 class="ion-text-center">Thanks for your purchase</h2>
+      </ion-col>
+    </ion-row>
+
+    <!-- food info -->
+    <ion-row class="ion-padding-horizontal ion-padding-top food-info">
+      <ion-col class="ion-no-padding ion-align-self-center" size="5">
+        <img src="../../../../assets/friedsausages.jpg" class="food-img">
+      </ion-col>
+      <ion-col size="7" class="text-info ion-padding-start">
+        <p class="food-desc">{{coupon.coupon.name}}</p>
+        <p class="food-ings">{{coupon.coupon.desc}}</p>
+      </ion-col>
+    </ion-row>
+
+    <!-- coupon info -->
+    <ion-row class="coupon-info ion-margin ion-padding">
+      <ion-col size="6">Redeem Code:</ion-col>
+      <ion-col class="ion-text-end ion-padding-bottom" size="6">{{coupon.redeem_code}}</ion-col>
+      <ion-col size="6">Coupon Status:</ion-col>
+      <ion-col class="ion-text-end  ion-padding-bottom" size="6">{{coupon | couponState}}</ion-col>
+      <ion-col size="6">Expiration date:</ion-col>
+      <ion-col class="ion-text-end  ion-padding-bottom" size="6">{{coupon.coupon.exp_date}}</ion-col>
+      <ion-col size="6">Total Price:</ion-col>
+      <ion-col class="ion-text-end ion-no-padding" size="6">{{coupon.coupon.price}}</ion-col>
+    </ion-row>
+
+
+    <ion-row class="button-align">
+      <ion-col size="7">
+        <ion-button expand="block">Get the QR Code
+        </ion-button>
+      </ion-col>
+      <ion-col size="7">
+        <ion-button class="button" expand="block" routerLink="/user/coupons">Return
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
