@@ -1,3 +1,6 @@
+ion-grid{
+    padding: 0px;
+}
 // restaurant section
 ion-row.user-info {
     // background-size: contain;
@@ -39,29 +42,38 @@ p {
     background-color: rgba(255, 255, 255, 0.747);
 }
 
-// meal info
+// food info
 .food-info img {
     border-radius: 10px;
 }
 .food-info p {
     margin: 0px;
 }
-.text-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
+.food-name {
+    font-size: 14px;
+    color: #030303;
 }
 .food-desc {
-    font-size: 13px;
-}
-.food-ings {
-    color: rgb(146, 146, 146);
-    font-size: 11px;
+    color: #030303;
+    font-size: 14px;
+    padding-top: 3px;
 }
 .expiration-text {
     color: rgb(146, 146, 146);
+    font-size: 13px;
 }
+.total{
+    font-size: 13px;
+}
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color: black;
+    height: 1px;
+  }
+  
 
 // <!-- options -->
 
@@ -100,4 +112,7 @@ ion-button {
 .button-align{
     display: flex;
     justify-content: center;
+}
+.button-row{
+    margin-top: 30px;
 }
