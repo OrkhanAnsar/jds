@@ -12,6 +12,8 @@ import { WalletService } from '../wallet.service';
 })
 export class TopupComponent implements OnInit {
 
+  presets = [10, 20, 50, 100, 150, 200, 500, 1000]
+
   transactionForm: FormGroup = this.fb.group({
     wallet: ['', [Validators.required]],
     sum: [null, [Validators.required, Validators.min(1)]],
@@ -44,5 +46,9 @@ export class TopupComponent implements OnInit {
         error: err => this.overlayService.error(err),
         complete: () => this.overlayService.stopLoading()
       });
+  }
+
+  setAmount(amount: number) {
+    this.transactionForm.get('sum').setValue(amount);
   }
 }
