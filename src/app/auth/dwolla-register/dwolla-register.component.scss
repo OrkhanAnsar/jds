@@ -1,28 +1,31 @@
 .input {
-    background-color: #ffffff;
-    // width: 70%;
-    border-radius: 10px;
-    font-size: 14px;
-    border: none;
-    box-shadow: 0px 0px 10px -10px #030303;
-    text-indent: 15px;
+  background-color: #ffffff;
+  // width: 70%;
+  border-radius: 10px;
+  font-size: 14px;
+  border: none;
+  box-shadow: 0px 0px 10px -10px #030303;
+  text-indent: 15px;
+  max-width: 60%;
+  position: absolute;
+  right: 10px;
 }
 
 ion-button {
-    --background: #000;
-    --border-radius: 10px;
-    --color: white;
-    --font-size: 70px;
-    margin-top: 20px;
+  --background: #000;
+  --border-radius: 10px;
+  --color: white;
+  --font-size: 70px;
+  margin-top: 20px;
 }
 
 ion-row {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .button {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -32,12 +35,16 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+// /* Firefox */
+// input[type="number"] {
+//   -moz-appearance: textfield;
+// }
 
 .dwolla-frame {
   min-width: 100%;
   min-height: 70%;
+}
+
+.image {
+  margin: 10px;
 }

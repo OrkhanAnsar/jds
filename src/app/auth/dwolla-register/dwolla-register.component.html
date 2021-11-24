@@ -1,29 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-      <ion-title>
-          Dwolla Register
-      </ion-title>
+    <ion-title>
+      Dwolla Register
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
     <ion-row>
+      <img class="image" src="../../../assets/dwolla-register-photo.png">
+      <ion-text color="primary">
+        <h2>Find your Perfect Matches</h2>
+      </ion-text>
+    </ion-row>
+
+    <ion-row>
       <ion-col>
         <form [formGroup]="dwollaForm" (ngSubmit)="onSubmit()">
-          <p>Address</p>
-          <ion-input class="input" formControlName="address" placeholder="Enter your address">
-          </ion-input>
+          <ion-item lines="none">
+            <ion-label>Address</ion-label>
+            <ion-input class="input" formControlName="address" placeholder="Enter your address">
+            </ion-input>
+          </ion-item>
+          <br>
+          <ion-item lines="none">
+            <ion-label>Postal Code</ion-label>
+            <ion-input class="input" formControlName="postal_code" placeholder="Enter your postal code" type="number"
+              inputmode="decimal" min="10000" max="99999"></ion-input>
+          </ion-item>
+          <br>
+          <ion-item lines="none">
+            <ion-label>SSN</ion-label>
+            <ion-input class="input" formControlName="ssn" placeholder="Enter your SSN (last 4 digits)" type="number"
+              inputmode="decimal" min="1000" max="9999">
+            </ion-input>
+          </ion-item>
 
-          <p>Postal Code</p>
-          <ion-input class="input" formControlName="postal_code" placeholder="Enter your postal code" type="number"
-            inputmode="decimal" min="10000" max="99999">
-          </ion-input>
-
-          <p>SSN</p>
-          <ion-input class="input" formControlName="ssn" placeholder="Enter your SSN (last 4 digits)" type="number"
-            inputmode="decimal" min="1000" max="9999">
-          </ion-input>
+          <br>
 
           <ion-button class="button" expand="block" type="submit" [disabled]="!dwollaForm.valid">Register
           </ion-button>
