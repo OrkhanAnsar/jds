@@ -22,14 +22,14 @@
           <ion-label>
             <h2>{{coupon.vendor.name}}</h2>
             <p>
-              <ion-icon name="location"></ion-icon>{{coupon.vendor.city}}, {{coupon.vendor.state}}
+              <!-- TODO: restaurant city and state -->
+              <ion-icon name="location"></ion-icon>{{coupon.nearest_restaurant.city}}, {{coupon.nearest_restaurant.state}}
             </p>
             <!-- <p>
               <ion-icon name="time"></ion-icon>Working hours: 10AM - 22
             </p> -->
             <p>
-              <ion-icon name="star"></ion-icon>{{coupon.vendor.rating ? coupon.vendor.rating + ' out of 5': 'Not
-              rated'}}
+              <ion-icon name="star"></ion-icon>{{coupon.vendor.rating ? coupon.vendor.rating + ' out of 5': 'Notrated'}}
             </p>
           </ion-label>
         </ion-item>
