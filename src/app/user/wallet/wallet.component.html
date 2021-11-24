@@ -77,7 +77,7 @@
               <h2>{{transaction.purchased_coupon ? transaction.purchased_coupon.coupon.vendor.name : transaction.type
                 === 0 ? 'Topup Balance': 'Withdraw'}}</h2>
               <h3>{{transaction | transactionText : wallets}}</h3>
-              <h2 [ngClass]="transaction.type == 0 ? 'green': 'red'" class="price">{{transaction.value}}$</h2>
+              <h2 [ngClass]="transaction.type == 0 ? 'green': 'red'" class="price">${{transaction.value}}</h2>
             </ion-label>
           </ion-item>
         </ion-col>
