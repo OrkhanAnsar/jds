@@ -6,7 +6,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  content
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-row class="ion-margin-horizontal">
+    <ion-col *ngFor="let coupon of coupons" size="6">
+      <ion-card [routerLink]="['/user/coupons/coupon/', coupon.id]">
+        <img src="../../../assets/friedsausages.jpg" />
+        <ion-card-header class="ion-no-padding">
+          <h5 class="ion-no-margin">{{coupon.name}}</h5>
+          <h6 class="ion-no-margin">{{coupon.price}}$</h6>
+          <p class="ion-no-margin">{{coupon.short_desc}}</p>
+        </ion-card-header>
+      </ion-card>
+
+    </ion-col>
+  </ion-row>
 
 </ion-content>

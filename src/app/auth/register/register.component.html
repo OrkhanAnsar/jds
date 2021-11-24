@@ -1,3 +1,11 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title>
+          Register
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-grid>
     <ion-row>
@@ -13,29 +21,47 @@
             <ion-label>First Name</ion-label>
             <ion-input class="input" formControlName="first_name" placeholder="First Name" ngDefaultControl></ion-input>
           </ion-item>
+          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="ion-margin-start">
+            <p *ngIf="firstName.errors?.['required']" class="validation-error">First name is required</p>
+          </div>
+
 
           <ion-item lines="none">
             <ion-label>Last name</ion-label>
             <ion-input class="input" formControlName="last_name" placeholder="Last Name" ngDefaultControl></ion-input>
           </ion-item>
+          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"  class="ion-margin-start">
+            <p *ngIf="lastName.errors?.['required']" class="validation-error">Last name is required</p>
+          </div>
+
 
           <ion-item lines="none">
             <ion-label>E-mail</ion-label>
             <ion-input class="input" formControlName="email" placeholder="Enter your e-mail" ngDefaultControl>
             </ion-input>
           </ion-item>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)"  class="ion-margin-start">
+            <p *ngIf="email.errors?.['required']" class="validation-error">Email is required</p>
+          </div>
 
           <ion-item lines="none">
             <ion-label>Username</ion-label>
             <ion-input class="input" formControlName="username" placeholder="Enter your username" ngDefaultControl>
             </ion-input>
           </ion-item>
+          <div *ngIf="username.invalid && (username.dirty || username.touched)"  class="ion-margin-start">
+            <p *ngIf="username.errors?.['required']" class="validation-error">Username is required</p>
+          </div>
+
 
           <ion-item lines="none">
             <ion-label>Password</ion-label>
             <ion-input class="input" formControlName="password" placeholder="Password" ngDefaultControl type="password">
             </ion-input>
           </ion-item>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)"  class="ion-margin-start">
+            <p *ngIf="password.errors?.['required']" class="validation-error">Password is required</p>
+          </div>
 
           <ion-item lines="none">
             <ion-label>Birth date</ion-label>
@@ -43,23 +69,30 @@
               displayFormat="YYYY-MM-DD" [max]="_18yearsAgo">
             </ion-datetime>
           </ion-item>
+          <div *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)" class="ion-margin-start">
+            <p *ngIf="birthDate.errors?.['required']" class="validation-error">Birth date is required</p>
+          </div>
 
           <ion-list>
             <ion-item lines="none">
               <ion-label>State</ion-label>
               <ion-select class="input select" formControlName="state" placeholder="Pick your state">
-                <ion-select-option
-                  *ngFor="let state of states"
-                  [value]="state.value"
-                >{{state.text}}</ion-select-option>
+                <ion-select-option *ngFor="let state of states" [value]="state.value">{{state.text}}</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-list>
+          <div *ngIf="state.invalid && (state.dirty || state.touched)" class="ion-margin-start">
+            <p *ngIf="state.errors?.['required']" class="validation-error">State is required</p>
+          </div>
+
 
           <ion-item lines="none">
             <ion-label>City</ion-label>
             <ion-input class="input" formControlName="city" placeholder="City" ngDefaultControl></ion-input>
           </ion-item>
+          <div *ngIf="city.invalid && (city.dirty || city.touched)"  class="ion-margin-start">
+            <p *ngIf="city.errors?.['required']" class="validation-error">City is required</p>
+          </div>
 
           <!-- gender -->
           <ion-list lines="none">

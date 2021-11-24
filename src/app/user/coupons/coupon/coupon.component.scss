@@ -1,0 +1,118 @@
+ion-grid{
+    padding: 0px;
+}
+// restaurant section
+ion-row.user-info {
+    // background-size: contain;
+    --background: none;
+    background-image: url("../../../../assets/background_vendor.jpg");
+    // background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // padding: 10px 0px;
+}
+.profile-picture {
+    width: 70px;
+    height: 70px;
+    margin-right: 7px;
+}
+ion-item {
+    --padding-start: 0px;
+}
+
+ion-label h2 {
+    color: black;
+    font-weight: 600;
+    margin-bottom: 7px;
+    
+}
+ion-icon {
+    margin-right: 4px;
+}
+p {
+    margin-bottom: 7px;
+    color: black;
+    font-weight: 500;
+}
+.user-info {
+    --ion-background-color: transparent;
+}
+
+.overlay {
+    background-color: rgba(255, 255, 255, 0.747);
+}
+
+// food info
+.food-info img {
+    border-radius: 10px;
+}
+.food-info p {
+    margin: 0px;
+}
+.food-name {
+    font-size: 14px;
+    color: #030303;
+}
+.food-desc {
+    color: #030303;
+    font-size: 14px;
+    padding-top: 3px;
+}
+.expiration-text {
+    color: rgb(146, 146, 146);
+    font-size: 13px;
+}
+.total{
+    font-size: 13px;
+}
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color: black;
+    height: 1px;
+  }
+  
+
+// <!-- options -->
+
+ion-label {
+    font-size: 13px;
+    font-weight: normal;
+}
+.old-price{
+    color: red;
+    text-decoration: line-through;
+}
+.new-price{
+    color: rgb(69, 148, 69);
+}
+.price{
+    font-size: 13px;
+    color: rgb(69, 148, 69);
+}
+.total{
+    text-align: right;
+    color: rgb(37, 97, 153);
+}
+
+// global css
+ion-button {
+    --background: #000;
+    --border-radius: 20px;
+    --color: white;
+    --font-size: 70px;
+    // --padding-start: 40px;
+    // --padding-end: 40px;
+}
+.button {
+    font-size: 15px;
+}
+.button-align{
+    display: flex;
+    justify-content: center;
+}
+.button-row{
+    margin-top: 30px;
+}

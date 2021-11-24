@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { OverlayService } from 'src/app/shared/overlay.service';
 import { AuthService } from '../auth.service';
-import States from './states'
+import States from '../states'
 
 @Component({
   selector: 'app-register',
@@ -20,13 +21,16 @@ export class RegisterComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
-    birth_date: ['', []],
+    birth_date: ['', [Validators.required]],
     gender: ['1', [Validators.required]],
     state: ['', [Validators.required]],
     city: ['', [Validators.required]]
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private overlayService: OverlayService) { }
 
   ngOnInit() {
     const currDate = new Date();
@@ -34,13 +38,38 @@ export class RegisterComponent implements OnInit {
     this._18yearsAgo = currDate.toISOString();
   }
 
-  async onSubmit() {
-    this.authService.userInfo = this.registerForm.value;
-    this.router.navigate(['auth/interests']);
+  onSubmit() {
+    this.overlayService.loading();
+    this.authService.registerUser(this.registerForm.value)
+      .subscribe({
+        next: () => this.router.navigate(['auth/interests']),
+        error: err => this.overlayService.error(err),
+        complete: () => this.overlayService.stopLoading()
+      });
   }
 
-  change(e) {
-    console.log(e);
-    console.log('scdcd')
+  get firstName() {
+    return this.registerForm.get('first_name');
+  }
+  get lastName() {
+    return this.registerForm.get('last_name');
+  }
+  get email() {
+    return this.registerForm.get('email');
+  }
+  get username() {
+    return this.registerForm.get('username');
+  }
+  get password() {
+    return this.registerForm.get('password');
+  }
+  get birthDate() {
+    return this.registerForm.get('birth_date');
+  }
+  get state() {
+    return this.registerForm.get('state');
+  }
+  get city() {
+    return this.registerForm.get('city');
   }
 }

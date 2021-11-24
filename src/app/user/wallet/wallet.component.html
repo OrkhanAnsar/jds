@@ -8,6 +8,10 @@
 
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-row class="ion-justify-content-center">
     <ion-col size="12">
       <ion-row>
@@ -30,6 +34,7 @@
                   <p>{{wallet.status}}</p>
                 </ion-label>
               </ion-item>
+              <ion-button expand="block" [routerLink]="['/user/wallet/add-wallet']">Add Wallet</ion-button>
 
             </ion-list>
           </div>
@@ -45,7 +50,7 @@
       </ion-row>
 
       <ion-row class="ion-justify-content-between ion-align-items-center ion-padding-horizontal item-content">
-        <ion-col size="5">
+        <ion-col>
           <h3>
             <ion-icon class="ion-margin-end" color="warning" name="wallet"></ion-icon> {{balance}}$
           </h3>
@@ -66,12 +71,13 @@
           <ion-text *ngIf="!transactions?.length">No transactions yet.</ion-text>
           <ion-item *ngFor="let transaction of transactions">
             <ion-avatar class="ion-margin-end">
-              <ion-icon color="secondary" name="basket"></ion-icon>
+              <ion-icon [src]="transaction | transactionIcon"></ion-icon>
             </ion-avatar>
             <ion-label>
-              <h2>{{transaction.reason}}</h2>
-              <h3>{{transaction.details}}</h3>
-              <h2 [ngClass]="transaction.price > 0 ? 'green': 'red'" class="price">{{transaction.price}}$</h2>
+              <h2>{{transaction.purchased_coupon ? transaction.purchased_coupon.coupon.vendor.name : transaction.type
+                === 0 ? 'Topup Balance': 'Withdraw'}}</h2>
+              <h3>{{transaction | transactionText : wallets}}</h3>
+              <h2 [ngClass]="transaction.type == 0 ? 'green': 'red'" class="price">${{transaction.value}}</h2>
             </ion-label>
           </ion-item>
         </ion-col>

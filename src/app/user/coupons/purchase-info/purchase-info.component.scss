@@ -1,0 +1,62 @@
+ion-row.header {
+    // background-size: contain;
+    --background: none;
+    background-image: url("../../../../assets/background_vendor.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.header h2{
+    color: white;
+    text-align: center;
+}
+
+// meal info
+.food-info img {
+    border-radius: 10px;
+}
+.food-info p {
+    margin: 0px;
+}
+.text-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+.food-desc {
+    font-size: 13px;
+}
+.food-ings {
+    color: rgb(146, 146, 146);
+    font-size: 11px;
+}
+.expiration-text {
+    color: rgb(146, 146, 146);
+}
+
+// coupon info
+.coupon-info{
+    background-color: #FAFAFA;
+    color: black;
+    border-radius: 20px;
+}
+.coupon-info ion-col{
+    // padding-bottom: 20px;
+    font-size: 14px;
+}
+
+// button
+ion-button {
+    --background: #000;
+    --border-radius: 30px;
+    --color: white;
+    --font-size: 70px;
+    margin-top: 20px;
+}
+.button {
+    font-size: 15px;
+}
+.button-align{
+    display: flex;
+    justify-content: center;
+}

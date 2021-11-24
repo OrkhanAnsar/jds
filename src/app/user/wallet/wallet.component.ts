@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WalletInfo } from './wallet.model';
+import { ActivatedRoute } from '@angular/router';
+import { forkJoin } from 'rxjs';
+import { OverlayService } from 'src/app/shared/overlay.service';
+import { Transaction, WalletInfo } from './wallet.model';
 import { WalletService } from './wallet.service';
 
 @Component({
@@ -11,20 +14,36 @@ export class WalletComponent implements OnInit {
 
   wallets: WalletInfo[] = [];
   balance: string = '---';
+  transactions: Transaction[];
 
-  transactions: { reason: string, details: string, price: number } [] = [
-
-  ];
-
-  constructor(private walletService: WalletService) { }
-
+  constructor(private walletService: WalletService, private route: ActivatedRoute, private overlayService: OverlayService) { }
+  
   ngOnInit() {
-    this.walletService.getWallets()
-      .subscribe(
-        data => this.wallets = data
-      );
-
-        this.walletService.getBalance().subscribe(data => this.balance = data.value);
+    this.route.url.subscribe(() => this.init())
   }
 
+  init() {
+    this.overlayService.loading();
+
+    const observable = forkJoin({
+      wallets: this.walletService.getWallets(),
+      balance: this.walletService.getBalance(),
+      transactions: this.walletService.getTransactions()
+    })
+
+    observable.subscribe({
+      next: ({wallets, balance, transactions}) => {
+        this.wallets = wallets;
+        this.balance = balance.value;
+        this.transactions = transactions;
+      },
+      error: err => this.overlayService.error(err),
+      complete: () => this.overlayService.stopLoading()
+    });
+  }
+
+  refresh(event) {
+    this.init();
+    event.target.complete();
+  }
 }

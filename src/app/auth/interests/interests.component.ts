@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
-import { LoadingService } from 'src/app/shared/loading.service';
+import { OverlayService } from 'src/app/shared/overlay.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -22,10 +22,10 @@ export class InterestsComponent implements OnInit {
     acceptance: [false, [Validators.requiredTrue]]
   })
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private loadingService: LoadingService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private overlayService: OverlayService, private router: Router) { }
 
   ngOnInit() {
-    this.loadingService.present();
+    this.overlayService.loading();
     this.authService.getInterests()
       .pipe(
         map(interestsObj => {
@@ -33,21 +33,21 @@ export class InterestsComponent implements OnInit {
             .map(key => ({ text: key, value: interestsObj[key] }));
         })
       )
-      .subscribe(data => {
-        this.interests = data;
-        this.loadingService.stop()
+      .subscribe({
+        next: data => this.interests = data,
+        error: err => this.overlayService.error(err),
+        complete: () => this.overlayService.stopLoading()
       });
   }
 
-  onSubmit() {
-    this.loadingService.present();
+  async onSubmit() {
+    this.overlayService.loading();
 
-    this.authService.userInterests = this.interestsForm.value;
-
-    this.authService.registerUser()
-      .subscribe(data => {
-        this.loadingService.stop();
-        this.router.navigate(['auth/dwolla-registration']);
+    (await this.authService.applyInterests(this.interestsForm.value))
+      .subscribe({
+        next: data => this.router.navigate(['auth/dwolla-registration']),
+        error: err => this.overlayService.error(err),
+        complete: () => this.overlayService.stopLoading()
       });
   }
 }

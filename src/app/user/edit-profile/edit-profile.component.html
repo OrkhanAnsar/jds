@@ -1,0 +1,102 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img class="image" src="../../../assets/home 5.jpg" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <form method="POST" [formGroup]="updateForm" (ngSubmit)="onSubmit()" *ngIf="isEditProfileLoaded; else loading">
+
+          <ion-item lines="none">
+            <ion-label>First Name</ion-label>
+            <ion-input [value]="userInfo.first_name" class="input" formControlName="first_name" placeholder="First Name" ngDefaultControl></ion-input>
+          </ion-item>
+          <div *ngIf="first_name.invalid && (first_name.dirty || first_name.touched)" class="ion-margin-start">
+            <p *ngIf="first_name.errors?.['first_name']" class="validation-error">First name is required</p>
+          </div>
+
+          <ion-item lines="none">
+            <ion-label>Last name</ion-label>
+            <ion-input [value]="userInfo.last_name" class="input" formControlName="last_name" placeholder="Last Name" ngDefaultControl></ion-input>
+          </ion-item>
+          <div *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)"  class="ion-margin-start">
+            <p *ngIf="last_name.errors?.['required']" class="validation-error">Last name is required</p>
+          </div>
+
+          <ion-item lines="none">
+            <ion-label>E-mail</ion-label>
+            <ion-input [value]="userInfo.email" class="input" formControlName="email" placeholder="Enter your e-mail" ngDefaultControl>
+            </ion-input>
+          </ion-item>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)"  class="ion-margin-start">
+            <p *ngIf="email.errors?.['required']" class="validation-error">Email is required</p>
+          </div>
+
+          <ion-item lines="none">
+            <ion-label>Username</ion-label>
+            <ion-input [value]="userInfo.user" class="input" formControlName="user" placeholder="Enter your username" ngDefaultControl>
+            </ion-input>
+          </ion-item>
+          <div *ngIf="user.invalid && (user.dirty || user.touched)"  class="ion-margin-start">
+            <p *ngIf="user.errors?.['required']" class="validation-error">Username is required</p>
+          </div>
+
+          <ion-item lines="none">
+            <ion-label>Birth date</ion-label>
+            <ion-datetime [value]="userInfo.birth_date" class="input" formControlName="birth_date" ngDefaultControl placeholder="Birth Date"
+                          displayFormat="YYYY-MM-DD" [max]="_18yearsAgo">
+            </ion-datetime>
+          </ion-item>
+          <div *ngIf="birth_date.invalid && (birth_date.dirty || birth_date.touched)" class="ion-margin-start">
+            <p *ngIf="birth_date.errors?.['required']" class="validation-error">Birth date is required</p>
+          </div>
+
+          <!-- <ion-list>
+             <ion-item lines="none">
+               <ion-label>State</ion-label>
+               <ion-select [value]="userInfo.state" class="input select" formControlName="state" placeholder="Pick your state">
+                 <ion-select-option *ngFor="let state of states" [value]="state.value" [selected]="userInfo.state">{{userInfo.state}}</ion-select-option>
+               </ion-select>
+             </ion-item>
+           </ion-list>
+           <div *ngIf="state.invalid && (state.dirty || state.touched)" class="ion-margin-start">
+             <p *ngIf="state.errors?.['required']" class="validation-error">State is required</p>
+           </div>
+
+
+           <ion-item lines="none">
+             <ion-label>City</ion-label>
+             <ion-input [value]="userInfo.city" class="input" formControlName="city" placeholder="City" ngDefaultControl></ion-input>
+           </ion-item>
+           <div *ngIf="city.invalid && (city.dirty || city.touched)"  class="ion-margin-start">
+             <p *ngIf="city.errors?.['required']" class="validation-error">City is required</p>
+           </div>
+
+            gender
+           <ion-list lines="none">
+             <ion-radio-group ngControl="gender" formControlName="gender" ngDefaultControl>
+               <ion-list-header>
+                 <ion-label>I am</ion-label>
+               </ion-list-header>
+
+               <ion-item>
+                 <ion-label>Male</ion-label>
+                 <ion-radio slot="start" value="1"></ion-radio>
+               </ion-item>
+
+               <ion-item>
+                 <ion-label>Female</ion-label>
+                 <ion-radio slot="start" value="0"></ion-radio>
+               </ion-item>
+             </ion-radio-group>
+           </ion-list>-->
+
+          <ion-button type="submit" expand="block" [disabled]="!updateForm.valid">Update</ion-button>
+          
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  dwollaMode: 'sandbox',
   apiBaseUrl: 'https://jdsapp.pythonanywhere.com'
 };
 

@@ -1,42 +1,69 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Topup
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
 <ion-content class="container">
     <ion-row class="ion-margin-horizontal ion-align-items-center">
         <ion-col>
             <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
                 <!-- card picker -->
-                <ion-item lines="none">
-                    <ion-label>Wallet</ion-label>
+                <p class="label">Wallet</p>
 
-                    <ion-select class="input select" formControlName="from_wallet" placeholder="Pick your card">
-                        <ion-select-option *ngFor="let wallet of wallets" [value]="wallet.id">{{wallet.name}}
-                        </ion-select-option>
-                    </ion-select>
-                </ion-item>
+                <ion-select class="input-shadow" formControlName="wallet" placeholder="Pick your account">
+                    <ion-select-option *ngFor="let wallet of wallets" [value]="wallet.id">{{wallet.name}}
+                    </ion-select-option>
+                </ion-select>
 
+                <br>
                 <!-- amount input -->
-                <ion-item lines="none">
-                    <ion-label>Amount</ion-label>
-                    <ion-input class="input" formControlName="sum" placeholder="Enter the amount of money">
-                        <ion-icon name="logo-usd"></ion-icon>
-                    </ion-input>
-                </ion-item>
+                <p class="label">Amount</p>
 
-                <!-- radio process
-                    <ion-list lines="none">
-                        <ion-radio-group formControlName="process" >
-                            <ion-item>
-                                <ion-label>deposit</ion-label>
-                                <ion-radio slot="start" value="0"></ion-radio>
-                            </ion-item>
-        
-                            <ion-item>
-                                <ion-label>withdraw</ion-label>
-                                <ion-radio slot="start" value="1"></ion-radio>
-                            </ion-item>
-                        </ion-radio-group>
-                    </ion-list> -->
+                <ion-input class="amount input-shadow" formControlName="sum" placeholder="Enter the amount of money"
+                    inputmode="decimal">
+                    <ion-badge class="usd-badge" color="light">USD</ion-badge>
+                </ion-input>
+
+                <br>
+
+                <!-- presets -->
+
+                <ion-grid>
+                    <ion-row>
+                        <ion-col *ngFor="let preset of presets" size="3">
+                            <ion-chip class="preset-chip" outline="true" color="dark" (click)="setAmount(preset)">
+                                <ion-label>{{preset}}</ion-label>
+                            </ion-chip>
+
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+
+                <br>
+
+                <!-- radio process -->
+                <ion-list lines="none">
+                    <ion-radio-group formControlName="direction">
+                        <ion-item>
+                            <ion-label>Deposit</ion-label>
+                            <ion-radio slot="start" value="0"></ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Withdraw</ion-label>
+                            <ion-radio slot="start" value="1"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+
+                <br>
 
                 <!-- button -->
-                <ion-button class="button" type="submit" expand="block" [disabled]="!transactionForm.valid">Process
+                <ion-button class="button" type="submit" expand="block" color="dark"
+                    [disabled]="!transactionForm.valid">Process
                 </ion-button>
             </form>
         </ion-col>

@@ -1,3 +1,11 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title>
+          Login
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-grid>
     <ion-row>
@@ -11,9 +19,15 @@
           <p>Username</p>
           <ion-input class="input" formControlName="username" placeholder="Enter your username" ngDefaultControl>
           </ion-input>
+          <div *ngIf="username.invalid && (username.dirty || username.touched)">
+            <p *ngIf="username.errors?.['required']" class="validation-error">Username is required</p>
+          </div>
           <p>Password</p>
           <ion-input class="input" formControlName="password" placeholder="Enter your password" ngDefaultControl
             type="password"></ion-input>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            <p *ngIf="password.errors?.['required']" class="validation-error">Password is required</p>
+          </div>
           <ion-button class="button" expand="block" type="submit" [disabled]="!loginForm.valid">Login
           </ion-button>
         </form>
@@ -21,6 +35,9 @@
         <a class="ion-text-center link" [routerLink]="['../register']">Sign Up</a>
         <a class="ion-text-center link" [routerLink]="['../register']">Sign Up as Vendor</a>
       </ion-col>
+    </ion-row>
+    <ion-row>  <!-- development purposes only -->
+      <p style="color: gray;">Version 1.9</p>
     </ion-row>
   </ion-grid>
 </ion-content>
