@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 //import { OverlayService } from 'src/app/shared/overlay.service';
-import States from './../../auth/register/states';
+import States from '../../auth/states.js';
 import { UserInfo } from '../user.model';
 import { UserService } from './../user.service';
 
