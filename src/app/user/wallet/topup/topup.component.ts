@@ -39,13 +39,21 @@ export class TopupComponent implements OnInit {
   }
 
   onSubmit() {
-    this.overlayService.loading();
-    this.walletService.topUp(this.transactionForm.value)
-      .subscribe({
-        next: _ => this.router.navigate(['/user/wallet']),
-        error: err => this.overlayService.error(err),
-        complete: () => this.overlayService.stopLoading()
-      });
+    const topup = () => {
+      this.overlayService.loading();
+      this.walletService.topUp(this.transactionForm.value)
+        .subscribe({
+          next: _ => this.router.navigate(['/user/wallet']),
+          error: err => this.overlayService.error(err),
+          complete: () => this.overlayService.stopLoading()
+        })
+    };
+
+    this.overlayService.confirmation({
+      message: 'Are you sure to transfer money?',
+      ok: topup
+    });
+
   }
 
   setAmount(amount: number) {

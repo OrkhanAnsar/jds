@@ -37,13 +37,21 @@ export class CouponComponent implements OnInit {
   }
 
   purchase() {
-    this.overlayService.loading();
+    const purchaseCallback = () => {
+      this.overlayService.loading();
 
-    this.couponsService.purchase(this.id)
-      .subscribe({
-        next: data => this.router.navigate(['user/coupons/purchase-info', data.id]),
-        error: err => this.overlayService.error(err),
-        complete: () => this.overlayService.stopLoading()
-      });
+      this.couponsService.purchase(this.id)
+        .subscribe({
+          next: data => this.router.navigate(['user/coupons/purchase-info', data.id]),
+          error: err => this.overlayService.error(err),
+          complete: () => this.overlayService.stopLoading()
+        });
+    }
+
+    this.overlayService.confirmation({
+      message: 'Are you sure want to buy this coupon?',
+      ok: purchaseCallback
+    });
+
   }
 }
