@@ -11,6 +11,13 @@ export interface Coupon {
 
 export interface CouponDetails extends Coupon {
     vendor: Vendor;
+    nearest_restaurant: Restaurant
+}
+
+export interface Restaurant {
+    state: string;
+    city: string;
+    address: string;
 }
 
 export interface PurchasedCoupon {
