@@ -1,29 +1,79 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-      <ion-title>
-          Dwolla Register
-      </ion-title>
+    <ion-title>
+      Dwolla Register
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
     <ion-row>
+      <img class="image" src="../../../assets/dwolla-register-photo.png">
+      <ion-text color="primary">
+        <h2>Find your Perfect Matches</h2>
+      </ion-text>
+    </ion-row>
+
+    <ion-row>
       <ion-col>
         <form [formGroup]="dwollaForm" (ngSubmit)="onSubmit()">
-          <p>Address</p>
-          <ion-input class="input" formControlName="address" placeholder="Enter your address">
-          </ion-input>
+          <ion-item lines="none">
+            <ion-label>State</ion-label>
+            <ion-select class="input select" formControlName="state" placeholder="Pick your state">
+              <ion-select-option *ngFor="let state of states" [value]="state.value">{{state.text}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <div *ngIf="state.invalid && (state.dirty || state.touched)" class="ion-margin-start">
+            <p *ngIf="state.errors?.['required']" class="validation-error">State is required</p>
+          </div>
 
-          <p>Postal Code</p>
-          <ion-input class="input" formControlName="postal_code" placeholder="Enter your postal code" type="number"
-            inputmode="decimal" min="10000" max="99999">
-          </ion-input>
+          <br>
+          <ion-item lines="none">
+            <ion-label>City</ion-label>
+            <ion-input class="input" formControlName="city" placeholder="Enter your city">
+            </ion-input>
+          </ion-item>
+          <div *ngIf="city.invalid && (city.dirty || city.touched)" class="ion-margin-start">
+            <p *ngIf="city.errors?.['required']" class="validation-error">City is required</p>
+          </div>
 
-          <p>SSN</p>
-          <ion-input class="input" formControlName="ssn" placeholder="Enter your SSN (last 4 digits)" type="number"
-            inputmode="decimal" min="1000" max="9999">
-          </ion-input>
+          <br>
+          <ion-item lines="none">
+            <ion-label>Address</ion-label>
+            <ion-input class="input" formControlName="address" placeholder="Enter your address">
+            </ion-input>
+          </ion-item>
+          <div *ngIf="address.invalid && (address.dirty || address.touched)" class="ion-margin-start">
+            <p *ngIf="address.errors?.['required']" class="validation-error">Address is required</p>
+          </div>
+
+          <br>
+          <ion-item lines="none">
+            <ion-label>Postal Code</ion-label>
+            <ion-input class="input" formControlName="postal_code" placeholder="Enter your postal code" type="number"
+              inputmode="decimal" min="10000" max="99999"></ion-input>
+          </ion-item>
+          <div *ngIf="postalCode.invalid && (postalCode.dirty || postalCode.touched)" class="ion-margin-start">
+            <p *ngIf="postalCode.errors?.['required']" class="validation-error">Postal Code is required</p>
+            <p *ngIf="postalCode.errors?.['min']" class="validation-error">Postal Code should have 5 digit</p>
+            <p *ngIf="postalCode.errors?.['max']" class="validation-error">Postal Code should have 5 digit</p>
+          </div>
+
+          <br>
+          <ion-item lines="none">
+            <ion-label>SSN</ion-label>
+            <ion-input class="input" formControlName="ssn" placeholder="Enter your SSN (last 4 digits)" type="number"
+              inputmode="decimal" min="1000" max="9999">
+            </ion-input>
+          </ion-item>
+          <div *ngIf="ssn.invalid && (ssn.dirty || ssn.touched)" class="ion-margin-start">
+            <p *ngIf="ssn.errors?.['required']" class="validation-error">SSN is required</p>
+            <p *ngIf="ssn.errors?.['min']" class="validation-error">Please enter last 4 digits of SSN</p>
+            <p *ngIf="ssn.errors?.['max']" class="validation-error">Please enter last 4 digits of SSN</p>
+          </div>
+
+          <br>
 
           <ion-button class="button" expand="block" type="submit" [disabled]="!dwollaForm.valid">Register
           </ion-button>

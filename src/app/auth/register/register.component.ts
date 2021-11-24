@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OverlayService } from 'src/app/shared/overlay.service';
 import { AuthService } from '../auth.service';
-import States from './states'
+import States from '../states'
 
 @Component({
   selector: 'app-register',

@@ -12,6 +12,8 @@ import { WalletService } from '../wallet.service';
 })
 export class TopupComponent implements OnInit {
 
+  presets = [10, 20, 50, 100, 150, 200, 500, 1000]
+
   transactionForm: FormGroup = this.fb.group({
     wallet: ['', [Validators.required]],
     sum: [null, [Validators.required, Validators.min(1)]],
@@ -37,12 +39,24 @@ export class TopupComponent implements OnInit {
   }
 
   onSubmit() {
-    this.overlayService.loading();
-    this.walletService.topUp(this.transactionForm.value)
-      .subscribe({
-        next: _ => this.router.navigate(['/user/wallet']),
-        error: err => this.overlayService.error(err),
-        complete: () => this.overlayService.stopLoading()
-      });
+    const topup = () => {
+      this.overlayService.loading();
+      this.walletService.topUp(this.transactionForm.value)
+        .subscribe({
+          next: _ => this.router.navigate(['/user/wallet']),
+          error: err => this.overlayService.error(err),
+          complete: () => this.overlayService.stopLoading()
+        })
+    };
+
+    this.overlayService.confirmation({
+      message: 'Are you sure to transfer money?',
+      ok: topup
+    });
+
+  }
+
+  setAmount(amount: number) {
+    this.transactionForm.get('sum').setValue(amount);
   }
 }

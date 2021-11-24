@@ -11,6 +11,7 @@ export class OverlayService {
   constructor(private loadingController: LoadingController, private alertController: AlertController) { }
 
   async loading(message?: string) {
+    await this.stopLoading();
     this._loading = await this.loadingController.create({
       message: message || 'Please wait...',
       spinner: 'dots'
@@ -20,12 +21,37 @@ export class OverlayService {
   }
 
   stopLoading() {
-    return this._loading?.dismiss();
+    return Promise.all([this._loading?.dismiss(), this._alert?.dismiss()]);
+  }
+
+  async confirmation({message, ok, cancel = null}) {
+    await this.stopLoading();
+
+    this._alert = await this.alertController.create({
+      header: 'Confirm!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: cancel
+        },
+        {
+          text: 'OK',
+          role: 'ok',
+          handler: ok
+        }
+      ],
+      message: message,
+      keyboardClose: true,
+      cssClass: 'confirmation-alert'
+    })
+    return this._alert.present();
   }
 
   async info(message: string) {
     await this.stopLoading();
     this._alert = await this.alertController.create({
+      header: 'Info',
       buttons: [
         'OK'
       ],
@@ -40,6 +66,7 @@ export class OverlayService {
   async error(error?: string | any) {
     await this.stopLoading();
     this._alert = await this.alertController.create({
+      header: 'Error!',
       buttons: [
         'OK'
       ],
